@@ -1,0 +1,102 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "https://github.com/heigeo/cordova-plugin-tensorflow",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "https://github.com/heigeo/cordova-plugin-tensorflow",
+        "spec": "git+https://github.com/heigeo/cordova-plugin-tensorflow.git",
+        "type": "hosted",
+        "hosted": {
+          "type": "github",
+          "ssh": "git@github.com:heigeo/cordova-plugin-tensorflow.git",
+          "sshUrl": "git+ssh://git@github.com/heigeo/cordova-plugin-tensorflow.git",
+          "httpsUrl": "git+https://github.com/heigeo/cordova-plugin-tensorflow.git",
+          "gitUrl": "git://github.com/heigeo/cordova-plugin-tensorflow.git",
+          "shortcut": "github:heigeo/cordova-plugin-tensorflow",
+          "directUrl": "https://raw.githubusercontent.com/heigeo/cordova-plugin-tensorflow/master/package.json"
+        }
+      },
+      "/Users/mattpowers/PhoneGap/Whirlpool POC/node_modules"
+    ]
+  ],
+  "_from": "git+https://github.com/heigeo/cordova-plugin-tensorflow.git",
+  "_id": "cordova-plugin-tensorflow@0.0.1",
+  "_inCache": true,
+  "_location": "/cordova-plugin-tensorflow",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "https://github.com/heigeo/cordova-plugin-tensorflow",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "https://github.com/heigeo/cordova-plugin-tensorflow",
+    "spec": "git+https://github.com/heigeo/cordova-plugin-tensorflow.git",
+    "type": "hosted",
+    "hosted": {
+      "type": "github",
+      "ssh": "git@github.com:heigeo/cordova-plugin-tensorflow.git",
+      "sshUrl": "git+ssh://git@github.com/heigeo/cordova-plugin-tensorflow.git",
+      "httpsUrl": "git+https://github.com/heigeo/cordova-plugin-tensorflow.git",
+      "gitUrl": "git://github.com/heigeo/cordova-plugin-tensorflow.git",
+      "shortcut": "github:heigeo/cordova-plugin-tensorflow",
+      "directUrl": "https://raw.githubusercontent.com/heigeo/cordova-plugin-tensorflow/master/package.json"
+    }
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/heigeo/cordova-plugin-tensorflow.git#9c8b74c81a642b1381be517de8f22e0caa649180",
+  "_shasum": "29a6e3f9f7577d1022587b922124123b57cbe759",
+  "_shrinkwrap": null,
+  "_spec": "https://github.com/heigeo/cordova-plugin-tensorflow",
+  "_where": "/Users/mattpowers/PhoneGap/Whirlpool POC/node_modules",
+  "author": {
+    "name": "Houston Engineering, Inc."
+  },
+  "bugs": {
+    "url": "https://github.com/heigeo/cordova-plugin-tensorflow/issues"
+  },
+  "cordova": {
+    "id": "cordova-plugin-tensorflow",
+    "platforms": [
+      "android"
+    ]
+  },
+  "dependencies": {},
+  "description": "TensorFlow for Cordova",
+  "devDependencies": {},
+  "engines": [
+    {
+      "name": "cordova-android",
+      "version": ">=5.1.0"
+    }
+  ],
+  "gitHead": "9c8b74c81a642b1381be517de8f22e0caa649180",
+  "homepage": "https://github.com/heigeo/cordova-plugin-tensorflow#readme",
+  "keywords": [
+    "ai",
+    "inference",
+    "classification",
+    "imagerecognition",
+    "neuralnetworks",
+    "machinelearning",
+    "tensorflow",
+    "inception",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-tensorflow",
+  "optionalDependencies": {},
+  "readme": "# cordova-plugin-tensorflow\n\nIntegrate the TensorFlow inference library into your PhoneGap/Cordova application!\n\n```javascript\nvar tf = new TensorFlow('inception-v1');\nvar imgData = \"/9j/4AAQSkZJRgABAQEAYABgAAD//gBGRm ...\";\n\ntf.classify(imgData).then(function(results) {\n    results.forEach(function(result) {\n        console.log(result.title + \" \" + result.confidence);\n    });\n});\n\n/* Output:\nmilitary uniform 0.647296\nsuit 0.0477196\nacademic gown 0.0232411\n*/\n```\n## Installation\n\n### Cordova\n```bash\ncordova plugin add https://github.com/heigeo/cordova-plugin-tensorflow\n```\n\n### PhoneGap Build\n```xml\n<!-- config.xml -->\n<plugin spec=\"https://github.com/heigeo/cordova-plugin-tensorflow.git\" />\n```\n\n## Supported Platforms\n\n * Android\n * iOS\n\n## API\n\nThe plugin provides a `TensorFlow` class that can be used to initialize graphs and run the inference algorithm.\n\n### Initialization\n\n```javascript\n// Use the Inception model (will be downloaded on first use)\nvar tf = new TensorFlow('inception-v1');\n\n// Use a custom retrained model\nvar tf = new TensorFlow('custom-model', {\n    'label': 'My Custom Model',\n    'model_path': \"https://example.com/graphs/custom-model-2017.zip#rounded_graph.pb\",\n    'label_path': \"https://example.com/graphs/custom-model-2017.zip#retrained_labels.txt\",\n    'input_size': 299,\n    'image_mean': 128,\n    'image_std': 128,\n    'input_name': 'Mul',\n    'output_name': 'final_result'\n})\n```\n\nTo use a custom model, follow the steps to [retrain the model](https://www.tensorflow.org/tutorials/image_retraining) and [optimize it for mobile use](https://petewarden.com/2016/09/27/tensorflow-for-mobile-poets/).\nPut the .pb and .txt files in a HTTP-accessible zip file, which will be downloaded via the [FileTransfer plugin](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-file-transfer/).  If you use the generic Inception model it will be downloaded from [the TensorFlow website](https://storage.googleapis.com/download.tensorflow.org/models/inception5h.zip) on first use.\n\n### Methods\n\nEach method returns a `Promise` (if available) and also accepts a callback and errorCallback.\n\n\n### classify(image[, callback, errorCallback])\nClassifies an image with TensorFlow's inference algorithm and the registered model.  Will automatically download and initialize the model if necessary, but it is recommended to call `load()` explicitly for the best user experience.\n\nNote that the image must be provided as base64 encoded JPEG or PNG data.  Support for file paths may be added in a future release.\n\n```javascript\nvar tf = new TensorFlow(...);\nvar imgData = \"/9j/4AAQSkZJRgABAQEAYABgAAD//gBGRm ...\";\ntf.classify(imgData).then(function(results) {\n    results.forEach(function(result) {\n        console.log(result.title + \" \" + result.confidence);\n    });\n});\n```\n\n### load()\n\nDownloads the referenced model files and loads the graph into TensorFlow.\n\n```javascript\nvar tf = new TensorFlow(...);\ntf.load().then(function() {\n    console.log(\"Model loaded\");\n});\n```\n\nDownloading the model files can take some time.  If you would like to provide a progress indicator, you can do that with an `onprogress` event:\n```javascript\nvar tf = new TensorFlow(...);\ntf.onprogress = function(evt) {\n    if (evt['status'] == 'downloading')\n        console.log(\"Downloading model files...\");\n        console.log(evt.label);\n        if (evt.detail) {\n            // evt.detail is from the FileTransfer API\n            var $elem = $('progress');\n            $elem.attr('max', evt.detail.total);\n            $elem.attr('value', evt.detail.loaded);\n        }\n    } else if (evt['status'] == 'unzipping') {\n        console.log(\"Extracting contents...\");\n    } else if (evt['status'] == 'initializing') {\n        console.log(\"Initializing TensorFlow\");\n    }\n};\ntf.load().then(...);\n```\n\n### checkCached()\nChecks whether the requisite model files have already been downloaded.  This is useful if you want to provide an interface for downloading and managing TensorFlow graphs that is separate from the classification interface.\n\n```javascript\nvar tf = new TensorFlow(...);\ntf.checkCached().then(function(isCached) {\n    if (isCached) {\n        $('button#download').hide();\n    }\n});\n```\n\n## References\n\nThis plugin is made possible by the following libraries and tutorials:\n\nSource | Files\n-------|--------\n[TensorFlow Android Inference Interface] | [libtensorflow_inference.so],<br>[libandroid_tensorflow_inference_java.jar]\n[TensorFlow Android Demo] |[Classifer.java],<br>[TensorFlowImageClassifier.java][TensorFlowImageClassifier.java] (modified)\n[TensorflowPod] | Referenced via [podspec]\n[TensorFlow iOS Examples] | [ios_image_load.mm][ios_image_load.mm] (modified),<br>[tensorflow_utils.mm][tensorflow_utils.mm] (+ RunModelViewController.mm)\n\n[TensorFlow Android Inference Interface]: https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/android\n[libtensorflow_inference.so]: https://github.com/heigeo/cordova-plugin-tensorflow/blob/master/src/android/tf_libs/armeabi-v7a/libtensorflow_inference.so\n[libandroid_tensorflow_inference_java.jar]: https://github.com/heigeo/cordova-plugin-tensorflow/blob/master/src/android/tf_libs/libandroid_tensorflow_inference_java.jar\n[TensorFlow Android Demo]: https://github.com/tensorflow/tensorflow/tree/master/tensorflow/examples/android\n[Classifer.java]: https://github.com/heigeo/cordova-plugin-tensorflow/blob/master/src/android/tf_libs/Classifier.java\n[TensorFlowImageClassifier.java]: https://github.com/heigeo/cordova-plugin-tensorflow/blob/master/src/android/tf_libs/TensorFlowImageClassifier.java\n[TensorflowPod]: https://github.com/rainbean/TensorflowPod\n[podspec]: https://github.com/heigeo/cordova-plugin-tensorflow/blob/master/plugin.xml#L38\n[TensorFlow iOS Examples]: https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/ios_examples\n[ios_image_load.mm]: https://github.com/heigeo/cordova-plugin-tensorflow/blob/master/src/ios/tf_libs/ios_image_load.mm\n[tensorflow_utils.mm]: https://github.com/heigeo/cordova-plugin-tensorflow/blob/master/src/ios/tf_libs/tensorflow_utils.mm\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heigeo/cordova-plugin-tensorflow.git"
+  },
+  "version": "0.0.1"
+}

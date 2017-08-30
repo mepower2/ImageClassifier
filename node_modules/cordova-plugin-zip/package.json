@@ -1,0 +1,109 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "cordova-plugin-zip",
+        "scope": null,
+        "escapedName": "cordova-plugin-zip",
+        "name": "cordova-plugin-zip",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/Users/mattpowers/PhoneGap/Whirlpool POC/node_modules"
+    ]
+  ],
+  "_from": "cordova-plugin-zip@latest",
+  "_id": "cordova-plugin-zip@3.1.0",
+  "_inCache": true,
+  "_location": "/cordova-plugin-zip",
+  "_nodeVersion": "0.10.29",
+  "_npmOperationalInternal": {
+    "host": "packages-5-east.internal.npmjs.com",
+    "tmp": "tmp/cordova-plugin-zip-3.1.0.tgz_1456240954165_0.5940777787473053"
+  },
+  "_npmUser": {
+    "name": "agrieve",
+    "email": "agrieve@chromium.org"
+  },
+  "_npmVersion": "3.3.8",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "cordova-plugin-zip",
+    "scope": null,
+    "escapedName": "cordova-plugin-zip",
+    "name": "cordova-plugin-zip",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-zip/-/cordova-plugin-zip-3.1.0.tgz",
+  "_shasum": "176c8248ea20d39f1cf959ef5e6156acca96b217",
+  "_shrinkwrap": null,
+  "_spec": "cordova-plugin-zip",
+  "_where": "/Users/mattpowers/PhoneGap/Whirlpool POC/node_modules",
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/MobileChromeApps/zip/issues"
+  },
+  "cordova": {
+    "id": "cordova-plugin-unzip",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "dependencies": {},
+  "description": "Unzips zip files",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "176c8248ea20d39f1cf959ef5e6156acca96b217",
+    "tarball": "https://registry.npmjs.org/cordova-plugin-zip/-/cordova-plugin-zip-3.1.0.tgz"
+  },
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.3.0"
+    }
+  ],
+  "gitHead": "977b57d2a5e4bf8d8b7671e5b498aa8ca098fbe4",
+  "homepage": "https://github.com/MobileChromeApps/zip",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "license": "BSD",
+  "maintainers": [
+    {
+      "name": "agrieve",
+      "email": "agrieve@chromium.org"
+    },
+    {
+      "name": "mmocny",
+      "email": "mmocny@gmail.com"
+    },
+    {
+      "name": "clelland",
+      "email": "iclelland@google.com"
+    },
+    {
+      "name": "maxw",
+      "email": "maxw@chromium.org"
+    }
+  ],
+  "name": "cordova-plugin-zip",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MobileChromeApps/cordova-plugin-zip.git"
+  },
+  "scripts": {},
+  "version": "3.1.0"
+}
