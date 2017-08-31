@@ -106,17 +106,17 @@ var app = {
     analyzePicture: function () {
         console.log('hey')
 
-        //var tf = new TensorFlow('inception-v1');
+        //var tf = new TensorFlow('inception-v3');
 
 
         var tf = new TensorFlow('custom-model', {
             'label': 'My Custom Model',
             'model_path': "https://files.fm/down.php?i=k4tm6wsy&n=custom-model.zip#retrained_graph.pb",//"http://www.filehosting.org/file/download/690268/hVj92SZrhZnvEQEr#retrained_graph.pb",
             'label_path': "https://files.fm/down.php?i=k4tm6wsy&n=custom-model.zip#retrained_labels.txt",//"http://www.filehosting.org/file/download/690268/hVj92SZrhZnvEQEr#retrained_labels.txt",
-            'input_size': 299,
+            'input_size': 224,
             'image_mean': 128,
             'image_std': 128,
-            'input_name': 'Mul',
+            'input_name': 'input',
             'output_name': 'final_result'
         });
 
