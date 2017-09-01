@@ -19,7 +19,7 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
         app.receivedEvent('deviceready');
-        $( "#tabs" ).tabs("option", "active", 1);
+        $( "#first" ).click();
         
         var vizDiv = document.getElementById('viz');
         var vizUrl = 'https://public.tableau.com/views/nikOrders_0/Sheet2';
@@ -166,9 +166,13 @@ var app = {
             var buttonUpdate = document.createElement('button');
             buttonUpdate.id = 'button2' + index;
             buttonUpdate.innerHTML = '<u>Update</u>';
+            buttonUpdate.style.visibility = "hidden";
             buttonUpdate.onclick = function() {
                 var field = document.getElementById('text' + index);
-                field.style.visibility = "visible";
+                var uiField = document.getElementById('p-' + index);
+                uiField.innerHTML = field.value;
+                field.style.visibility = "hidden";
+                document.getElementById('button2' + index).style.visibility = "hidden";
             };
 
             var button = document.createElement('button');
@@ -180,10 +184,13 @@ var app = {
             button.onclick = function() {
                 var field = document.getElementById('text' + index);
                 field.style.visibility = "visible";
+                var field2 = document.getElementById('button2' + index);
+                field2.style.visibility = "visible";
             };
 
             div.appendChild(button);
             div.appendChild(textField);
+            div.appendChild(buttonUpdate);
             div.appendChild(document.createElement('br'));
             return div;
         }
@@ -192,7 +199,7 @@ var app = {
             var index = -1;
             matches.forEach(match => {
                 index++;
-                elem.innerHTML += match + "&nbsp;&nbsp;";
+                elem.innerHTML += "<p id=\"p-"+ index +"\">" + match + "</p>&nbsp;&nbsp;";
                 elem.appendChild(createEditFields(match, index));
             });
           },
