@@ -1,21 +1,3 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
 var app = {
 
     // Application Constructor
@@ -37,7 +19,17 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
         app.receivedEvent('deviceready');
-
+        $( "#tabs" ).tabs("option", "active", 1);
+        
+        var vizDiv = document.getElementById('viz');
+        var vizUrl = 'https://public.tableau.com/views/nikOrders_0/Sheet2';
+        var options = {
+            width: '400px',
+            height: '540px',
+            hideToolbar: true,   // When NOT on public server (Own licensed server, complete share/download part goes)
+            hideTabs: true
+        };
+        viz = new tableau.Viz(vizDiv, vizUrl, options);
     },
     // Update DOM on a Received Event
     receivedEvent: function (id) {
@@ -68,8 +60,6 @@ var app = {
                 correctOrientation: true, //Corrects Android orientation quirks,
                 targetHeight: 100,
                 targetWidth: 100
-
-
             }
             return options;
         }
@@ -104,8 +94,8 @@ var app = {
     },
 
     analyzePicture: function () {
-        console.log('hey')
-
+        var elem = document.getElementById('result');
+        elem.innerHTML = "";
         //var tf = new TensorFlow('inception-v3');
 
 
@@ -132,16 +122,85 @@ var app = {
         tf.load().then(() => {
             console.log('Model Loaded');
             tf.classify(imgData).then(results => {
-                var elem = document.getElementById('result');
                 results.forEach(result => {
                     console.log(result.title + "- " + result.confidence);
                     elem.innerHTML += result.title + "- " + result.confidence + "<br/>";
                 });
             });
         });
-            
+    },
 
-        
+    getPermission: function() {
+        var successCallback = (hasPermission) => {
+            if(!hasPermission) {
+                window.plugins.speechRecognition.requestPermission(
+                    () => console.log('Permission Granted!'), 
+                    () => console.log('Permission Denied!'))
+            }
+            if(cordova.platformId === 'ios') {
+                document.getElementById("btnStopListening").style.visibility = "visible";
+            }
+        }
+        var errorCallback = function(hasPermission) {
+            console.log('Error while requesting permission');
+        }
 
+        window.plugins.speechRecognition.isRecognitionAvailable(successCallback, errorCallback);
+    },
+
+    startListening: function() {
+        var elem = document.getElementById('speechResults');
+        elem.innerHTML = "";
+        let options = {
+          language: 'en-US',
+          matches: 3
+        }
+
+        function createEditFields(match, index) {
+            var div = document.createElement('div');
+            var textField = document.createElement('input');
+            textField.id = 'text' + index;
+            textField.value = match;
+            textField.style.visibility = "hidden";
+
+            var buttonUpdate = document.createElement('button');
+            buttonUpdate.id = 'button2' + index;
+            buttonUpdate.innerHTML = '<u>Update</u>';
+            buttonUpdate.onclick = function() {
+                var field = document.getElementById('text' + index);
+                field.style.visibility = "visible";
+            };
+
+            var button = document.createElement('button');
+            button.id = 'button' + index;
+            button.innerHTML = '<u>Edit</u>';
+            button.style.background = 'none';
+            button.style.border = 'none';
+            button.style.cursor = 'pointer';
+            button.onclick = function() {
+                var field = document.getElementById('text' + index);
+                field.style.visibility = "visible";
+            };
+
+            div.appendChild(button);
+            div.appendChild(textField);
+            div.appendChild(document.createElement('br'));
+            return div;
+        }
+
+        window.plugins.speechRecognition.startListening(matches => {
+            var index = -1;
+            matches.forEach(match => {
+                index++;
+                elem.innerHTML += match + "&nbsp;&nbsp;";
+                elem.appendChild(createEditFields(match, index));
+            });
+          },
+        (onerror) => console.log('error: ' + onerror),
+        options);
+    },
+
+    stopListening: function() {
+        window.plugins.speechRecognition.stopListening(() => console.log('Finished listening..'));
     }
 };

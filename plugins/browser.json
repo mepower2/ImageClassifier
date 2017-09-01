@@ -66,6 +66,9 @@
         },
         "cordova-plugin-tensorflow": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "cordova-plugin-speechrecognition": {
+            "PACKAGE_NAME": "com.phonegap.helloworld"
         }
     },
     "dependent_plugins": {

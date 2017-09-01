@@ -87,6 +87,10 @@
                         {
                             "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SpeechRecognition\"><param name=\"android-package\" value=\"com.pbakondy.SpeechRecognition\" /></feature>",
+                            "count": 1
                         }
                     ],
                     "/widget": [
@@ -126,7 +130,7 @@
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.RECORD_AUDIO\" />",
-                            "count": 2
+                            "count": 3
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\" />",
@@ -233,6 +237,9 @@
             "PACKAGE_NAME": "com.phonegap.helloworld"
         },
         "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "cordova-plugin-speechrecognition": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
         }
     },
@@ -771,6 +778,14 @@
                 "navigator.notification",
                 "navigator"
             ]
+        },
+        {
+            "id": "cordova-plugin-speechrecognition.SpeechRecognition",
+            "file": "plugins/cordova-plugin-speechrecognition/www/speechRecognition.js",
+            "pluginId": "cordova-plugin-speechrecognition",
+            "merges": [
+                "window.plugins.speechRecognition"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -796,6 +811,7 @@
         "cordova-plugin-zip": "3.1.0",
         "cordova-plugin-tensorflow": "0.0.1",
         "cordova-plugin-vibration": "2.1.5",
-        "cordova-plugin-whitelist": "1.2.2"
+        "cordova-plugin-whitelist": "1.2.2",
+        "cordova-plugin-speechrecognition": "1.1.2"
     }
 }
