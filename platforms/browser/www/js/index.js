@@ -51,7 +51,7 @@ var app = {
             var options = {
                 // Some common settings are 20, 50, and 100
                 quality: 100,
-                destinationType: Camera.DestinationType.DATA_URL,
+                destinationType: Camera.DestinationType.DATA_URL,//Camera.DestinationType.DATA_URL,
                 // In this app, dynamically set the picture source, Camera or photo gallery
                 sourceType: srcType,
                 encodingType: Camera.EncodingType.JPEG,
@@ -101,8 +101,8 @@ var app = {
 
         var tf = new TensorFlow('custom-model', {
             'label': 'My Custom Model',
-            'model_path': "https://files.fm/down.php?i=k4tm6wsy&n=custom-model.zip#retrained_graph.pb",//"http://www.filehosting.org/file/download/690268/hVj92SZrhZnvEQEr#retrained_graph.pb",
-            'label_path': "https://files.fm/down.php?i=k4tm6wsy&n=custom-model.zip#retrained_labels.txt",//"http://www.filehosting.org/file/download/690268/hVj92SZrhZnvEQEr#retrained_labels.txt",
+            'model_path': "file:///storage/emulated/0/Android/data/com.phonegap.helloworld/files/custom-model/retrained_graph.pb",//"https://www.dropbox.com/s/x20zu9ah73he19p/custom-model.zip?dl=1#retrained_graph.pb",//"https://files.fm/down.php?i=k4tm6wsy&n=custom-model.zip#retrained_graph.pb",
+            'label_path': "file:///storage/emulated/0/Android/data/com.phonegap.helloworld/files/custom-model/retrained_labels.txt",//"https://www.dropbox.com/s/x20zu9ah73he19p/custom-model.zip?dl=1#retrained_labels.txt",//"https://files.fm/down.php?i=k4tm6wsy&n=custom-model.zip#retrained_labels.txt",
             'input_size': 224,
             'image_mean': 128,
             'image_std': 128,
@@ -153,7 +153,7 @@ var app = {
         elem.innerHTML = "";
         let options = {
           language: 'en-US',
-          matches: 3
+          matches: 1
         }
 
         function createEditFields(match, index) {
@@ -188,7 +188,19 @@ var app = {
                 field2.style.visibility = "visible";
             };
 
+            var buttonPub = document.createElement('button');
+            buttonPub.id = 'buttonPub' + index;
+            buttonPub.innerHTML = '<u>Publish</u>';
+            buttonPub.style.background = 'none';
+            buttonPub.style.border = 'none';
+            buttonPub.style.cursor = 'pointer';
+            buttonPub.onclick = function() {
+                var uiField = document.getElementById('p-' + index);
+                window.alert('Publish ' + uiField.innerHTML + ' to server done');
+            };
+
             div.appendChild(button);
+            div.appendChild(buttonPub);
             div.appendChild(textField);
             div.appendChild(buttonUpdate);
             div.appendChild(document.createElement('br'));
