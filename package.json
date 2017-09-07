@@ -8,7 +8,6 @@
         ],
         "plugins": {
             "cordova-plugin-battery-status": {},
-            "cordova-plugin-camera": {},
             "cordova-plugin-console": {},
             "cordova-plugin-contacts": {},
             "cordova-plugin-device": {},
@@ -28,13 +27,14 @@
             "cordova-plugin-tensorflow": {},
             "cordova-plugin-vibration": {},
             "cordova-plugin-whitelist": {},
-            "cordova-plugin-speechrecognition": {}
+            "cordova-plugin-speechrecognition": {},
+            "cordova-plugin-camera": {}
         }
     },
     "dependencies": {
         "cordova-android": "~6.2.3",
         "cordova-plugin-battery-status": "~1.1.1",
-        "cordova-plugin-camera": "~2.1.1",
+        "cordova-plugin-camera": "git+https://github.com/apache/cordova-plugin-camera.git",
         "cordova-plugin-console": "~1.0.2",
         "cordova-plugin-contacts": "~2.0.1",
         "cordova-plugin-device": "~1.1.1",

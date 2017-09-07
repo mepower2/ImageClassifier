@@ -7,14 +7,6 @@
         "is_top_level": true,
         "variables": {}
     },
-    "cordova-plugin-camera": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-camera@~2.1.1"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
     "cordova-plugin-media-capture": {
         "source": {
             "type": "registry",
@@ -187,6 +179,14 @@
         "source": {
             "type": "registry",
             "id": "cordova-plugin-speechrecognition"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-camera": {
+        "source": {
+            "type": "registry",
+            "id": "https://github.com/apache/cordova-plugin-camera.git"
         },
         "is_top_level": true,
         "variables": {}

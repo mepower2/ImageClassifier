@@ -10,9 +10,6 @@
         "cordova-plugin-battery-status": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
         },
-        "cordova-plugin-camera": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
-        },
         "cordova-plugin-console": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
         },
@@ -68,6 +65,9 @@
             "PACKAGE_NAME": "com.phonegap.helloworld"
         },
         "cordova-plugin-speechrecognition": {
+            "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "cordova-plugin-camera": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
         }
     },

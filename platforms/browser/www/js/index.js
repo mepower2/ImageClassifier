@@ -101,8 +101,8 @@ var app = {
 
         var tf = new TensorFlow('custom-model', {
             'label': 'My Custom Model',
-            'model_path': "file:///storage/emulated/0/Android/data/com.phonegap.helloworld/files/custom-model/retrained_graph.pb",//"https://www.dropbox.com/s/x20zu9ah73he19p/custom-model.zip?dl=1#retrained_graph.pb",//"https://files.fm/down.php?i=k4tm6wsy&n=custom-model.zip#retrained_graph.pb",
-            'label_path': "file:///storage/emulated/0/Android/data/com.phonegap.helloworld/files/custom-model/retrained_labels.txt",//"https://www.dropbox.com/s/x20zu9ah73he19p/custom-model.zip?dl=1#retrained_labels.txt",//"https://files.fm/down.php?i=k4tm6wsy&n=custom-model.zip#retrained_labels.txt",
+            'model_path': "www/files/retrained_graph.pb",//"https://www.dropbox.com/s/x20zu9ah73he19p/custom-model.zip?dl=1#retrained_graph.pb",//"https://files.fm/down.php?i=k4tm6wsy&n=custom-model.zip#retrained_graph.pb",
+            'label_path': "www/files/retrained_labels.txt",//"https://www.dropbox.com/s/x20zu9ah73he19p/custom-model.zip?dl=1#retrained_labels.txt",//"https://files.fm/down.php?i=k4tm6wsy&n=custom-model.zip#retrained_labels.txt",
             'input_size': 224,
             'image_mean': 128,
             'image_std': 128,
@@ -114,7 +114,7 @@ var app = {
 
         var imgData;
         if (window.Testingimages.length == 0) {
-            imgData = image23
+            imgData = image23;
         } else {
             imgData = window.Testingimages[0];
         }
