@@ -106,7 +106,7 @@ var app = {
             'input_size': 224,
             'image_mean': 128,
             'image_std': 128,
-            'input_name': 'input',
+            'input_name': 'input',  // 'Mul' for v3, 'input' for v1/mobile-net
             'output_name': 'final_result'
         });
 
