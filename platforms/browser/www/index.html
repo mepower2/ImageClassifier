@@ -49,17 +49,17 @@
             <div id="viz"></div>
         </div>
 
-        <div class="app" id="image">
-            <h2>Please click photo</h2>
-            <div id="deviceready" class="blink">
+        <div id="image" style="text-align:center;">
+            <h2 style="margin:auto;">Please click photo</h2>
+            <div id="deviceready" style="margin:auto;" class="blink">
                 <p class="event listening">Connecting to Device</p>
                 <p class="event received">Device is Ready</p>
             </div>
             <button type="button" onclick="app.takePicture()">Click</button>
-            <img id="imageFile">
+            <img id="imageFile" style="margin:auto;">
             <button type="button" onclick="app.analyzePicture()">Analyze</button>
             <br />
-            <label id="result"> </label>
+            <label id="result" style="margin:auto;"> </label>
         </div>
 
         <div id="speech">

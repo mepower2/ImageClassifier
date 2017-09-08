@@ -29,7 +29,9 @@
             "cordova-plugin-speechrecognition": {},
             "cordova-plugin-camera": {},
             "cordova-plugin-media-capture": {
-                "CAMERA_USAGE_DESCRIPTION": "Need to use camera"
+                "CAMERA_USAGE_DESCRIPTION": "Need to use camera",
+                "MICROPHONE_USAGE_DESCRIPTION": "App would like to access the microphone.",
+                "PHOTOLIBRARY_USAGE_DESCRIPTION": "App would like to access the library."
             }
         }
     },
