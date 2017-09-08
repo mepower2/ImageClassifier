@@ -18,7 +18,7 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
-        app.receivedEvent('deviceready');
+        //app.receivedEvent('deviceready');
         $( "#first" ).click();
         
         var vizDiv = document.getElementById('viz');
@@ -33,14 +33,14 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function (id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+        // var parentElement = document.getElementById(id);
+        // var listeningElement = parentElement.querySelector('.listening');
+        // var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+        // listeningElement.setAttribute('style', 'display:none;');
+        // receivedElement.setAttribute('style', 'display:block;');
 
-        console.log('Received Event: ' + id);
+        // console.log('Received Event: ' + id);
     },
 
     takePicture: function () {
@@ -96,7 +96,7 @@ var app = {
     analyzePicture: function () {
         var elem = document.getElementById('result');
         elem.innerHTML = "";
-        //var tf = new TensorFlow('inception-v3');
+        //var tf = new TensorFlow('inception-v1');
 
 
         var tf = new TensorFlow('custom-model', {
@@ -221,5 +221,11 @@ var app = {
 
     stopListening: function() {
         window.plugins.speechRecognition.stopListening(() => console.log('Finished listening..'));
+    },
+
+    showUI: function(elem) {
+        elem.style.display = "none";
+        document.getElementById("tabs").style.display = "block";
+        document.getElementById("h1header").style.display = "block"
     }
 };

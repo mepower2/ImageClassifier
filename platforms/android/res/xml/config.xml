@@ -73,11 +73,8 @@
     </feature>
     <name>Whirlpool POC</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        Whirlpool Vision- Image Recognition Inventory API
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
-    </author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
