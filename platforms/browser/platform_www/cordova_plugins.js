@@ -660,7 +660,8 @@ module.exports.metadata =
     "cordova-plugin-zip": "3.1.0",
     "cordova-plugin-speechrecognition": "1.1.2",
     "cordova-plugin-camera": "2.4.2-dev",
-    "cordova-plugin-media-capture": "1.4.3"
+    "cordova-plugin-media-capture": "1.4.3",
+    "cordova.plugins.diagnostic": "3.6.7"
 }
 // BOTTOM OF METADATA
 });

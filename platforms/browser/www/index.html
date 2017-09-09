@@ -1,24 +1,4 @@
 <!DOCTYPE html>
-<!--
-    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
-
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
 
 <head>
@@ -30,12 +10,13 @@
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/index.css" />
-    <title>Whirlpool</title>
+    <title>Whirlpool Vision</title>
 </head>
 
 <body>
-    <h1><u>Whirlpool Appliance Utility</u></h1>
-    <div data-role="tabs" id="tabs">
+    <img src="img/welcome.png" onclick="app.showUI(this)" style="width:100%;height:100%">
+    <h1 id="h1header" style="display:none;background-color:#38c;color:white"><u>Whirlpool Appliance Utility</u></h1>
+    <div data-role="tabs" id="tabs" style="display:none;">
         <div data-role="navbar">
             <ul>
                 <li><a href="#dashboard" class="ui-btn ui-icon-bars ui-btn-icon-top" id="first" data-ajax="false">Dashboard</a></li>
@@ -50,24 +31,29 @@
         </div>
 
         <div id="image" style="text-align:center;">
-            <h2 style="margin:auto;">Please click photo</h2>
-            <div id="deviceready" style="margin:auto;" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+            <button type="button" onclick="app.takePicture()" class="btnRegular">Click new..</button>
+            
+            <div id="imageContainer">
+                <ul id="imageGrid" data-inset="true">
+                    <li style="display:none;">
+                        <a href="#" class="camContainer">
+                            <img src="img/photo_sample.png" class="camImg">
+                            <h5></h5>
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <button type="button" onclick="app.takePicture()">Click</button>
-            <img id="imageFile" style="margin:auto;">
-            <button type="button" onclick="app.analyzePicture()">Analyze</button>
+            
+            <button type="button" onclick="app.analyzePicture()" class="ui-footer btnRegular">Analyze</button>
             <br />
             <label id="result" style="margin:auto;"> </label>
         </div>
 
         <div id="speech">
             <h2 style="text-align: center;"> Speech Recognition Interface </h2>
-            <button onclick="app.startListening()"> Start Listening </button>
-            <button id="btnStopListening" onclick="app.stopListening()" style="visibility:hidden"> Stop Listening </button>
-            
-            <div id="speechResults" style="font-size: large;margin-left: 10%;"> </div>
+            <button onclick="app.startListening()" class="btnRegular"> Start Listening </button>
+            <button id="btnStopListening" onclick="app.stopListening()" style="visibility:hidden" class="btnRegular"> Stop Listening </button>
+            <div id="speechResults" style="font-size:large;margin-left: 10%;"> </div>
         </div>
     </div>
 

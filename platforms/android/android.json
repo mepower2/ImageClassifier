@@ -164,6 +164,16 @@
                             "xml": "<provider android:authorities=\"${applicationId}.provider\" android:exported=\"false\" android:grantUriPermissions=\"true\" android:name=\"android.support.v4.content.FileProvider\"><meta-data android:name=\"android.support.FILE_PROVIDER_PATHS\" android:resource=\"@xml/provider_paths\" /></provider>",
                             "count": 1
                         }
+                    ],
+                    "/manifest/application": [
+                        {
+                            "xml": "<receiver android:name=\"cordova.plugins.Diagnostic$LocationProviderChangedReceiver\"><intent-filter><action android:name=\"android.location.PROVIDERS_CHANGED\" /></intent-filter></receiver>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<receiver android:name=\"cordova.plugins.Diagnostic$NFCStateChangedReceiver\"><intent-filter><action android:name=\"android.nfc.action.ADAPTER_STATE_CHANGED\" /></intent-filter></receiver>",
+                            "count": 1
+                        }
                     ]
                 }
             },
@@ -172,6 +182,10 @@
                     "/*": [
                         {
                             "xml": "<feature name=\"TensorFlow\"><param name=\"android-package\" value=\"io.wq.tensorflow.TensorFlow\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Diagnostic\"><param name=\"android-package\" value=\"cordova.plugins.Diagnostic\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -251,6 +265,9 @@
         },
         "cordova-plugin-media-capture": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "cordova.plugins.diagnostic": {
+            "PACKAGE_NAME": "mw.whirlpool.poc"
         }
     },
     "dependent_plugins": {},
@@ -808,6 +825,14 @@
             "file": "plugins/cordova-plugin-media-capture/www/android/init.js",
             "pluginId": "cordova-plugin-media-capture",
             "runs": true
+        },
+        {
+            "id": "cordova.plugins.diagnostic.Diagnostic",
+            "file": "plugins/cordova.plugins.diagnostic/www/android/diagnostic.js",
+            "pluginId": "cordova.plugins.diagnostic",
+            "clobbers": [
+                "cordova.plugins.diagnostic"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -834,6 +859,7 @@
         "cordova-plugin-whitelist": "1.2.2",
         "cordova-plugin-speechrecognition": "1.1.2",
         "cordova-plugin-camera": "2.4.2-dev",
-        "cordova-plugin-media-capture": "1.4.3"
+        "cordova-plugin-media-capture": "1.4.3",
+        "cordova.plugins.diagnostic": "3.6.7"
     }
 }

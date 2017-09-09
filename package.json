@@ -32,7 +32,8 @@
                 "CAMERA_USAGE_DESCRIPTION": "Need to use camera",
                 "MICROPHONE_USAGE_DESCRIPTION": "App would like to access the microphone.",
                 "PHOTOLIBRARY_USAGE_DESCRIPTION": "App would like to access the library."
-            }
+            },
+            "cordova.plugins.diagnostic": {}
         }
     },
     "dependencies": {
@@ -58,6 +59,7 @@
         "cordova-plugin-statusbar": "~2.1.2",
         "cordova-plugin-tensorflow": "https://github.com/heigeo/cordova-plugin-tensorflow",
         "cordova-plugin-vibration": "~2.1.0",
-        "cordova-plugin-whitelist": "~1.2.1"
+        "cordova-plugin-whitelist": "~1.2.1",
+        "cordova.plugins.diagnostic": "^3.6.7"
     }
 }

@@ -192,5 +192,13 @@
         "variables": {
             "CAMERA_USAGE_DESCRIPTION": "Need to use camera"
         }
+    },
+    "cordova.plugins.diagnostic": {
+        "source": {
+            "type": "registry",
+            "id": "cordova.plugins.diagnostic"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }
