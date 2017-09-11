@@ -155,7 +155,7 @@ var app = {
         cordova.plugins.diagnostic.isMicrophoneAuthorized(function(authorized){
             console.log("App is " + (authorized ? "authorized" : "denied") + " access to the microphone");
             if(!authorized) {
-                cordova.plugins.diagnostic.getMicrophoneAuthorizationStatus(function(status){
+                cordova.plugins.diagnostic.requestMicrophoneAuthorization(function(status){
                     if(status === cordova.plugins.diagnostic.permissionStatus.GRANTED){
                         console.log("Microphone use is authorized");
                     }
