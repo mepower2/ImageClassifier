@@ -13,15 +13,15 @@
     <title>Whirlpool Vision</title>
 </head>
 
-<body>
-    <img src="img/welcome.png" onclick="app.showUI(this)" style="width:100%;height:100%">
+<body style="height:100%">
+    <img src="img/welcome.png" onclick="app.showUI(this)" style="width:100%;height:100%;padding-top:2%">
     <h1 id="h1header" style="display:none;background-color:#38c;color:white"><u>Whirlpool Appliance Utility</u></h1>
     <div data-role="tabs" id="tabs" style="display:none;">
         <div data-role="navbar">
             <ul>
-                <li><a href="#dashboard" class="ui-btn ui-icon-bars ui-btn-icon-top" id="first" data-ajax="false">Dashboard</a></li>
-                <li><a href="#image" class="ui-btn ui-icon-camera ui-btn-icon-top" data-ajax="false">Image</a></li>
-                <li><a href="#speech" class="ui-btn ui-icon-audio ui-btn-icon-top" onclick="app.getPermission()" data-ajax="false">Speech</a></li>
+                <li><a href="#image" data-role="button" id="first" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-top ui-icon-home">Home</a></li>
+                <li><a href="#speech" data-role="button" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-top ui-icon-voice" onclick="app.getPermission()">Voice</a></li>
+                <li><a href="#dashboard" data-role="button" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-top ui-icon-charts">Charts</a></li>
             </ul>
         </div>
     
@@ -31,7 +31,7 @@
         </div>
 
         <div id="image" style="text-align:center;">
-            <button type="button" onclick="app.takePicture()" class="btnRegular">Click new..</button>
+            <button type="button" onclick="app.takePicture()" class="btnRegular">Click New..</button>
             
             <div id="imageContainer">
                 <ul id="imageGrid" data-inset="true">

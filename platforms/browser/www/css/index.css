@@ -153,3 +153,22 @@ h1 {
     background: #38c !important;
     color: white !important;
 }
+
+.ui-mobile .ui-page {
+    min-height: 100% !important;
+}
+
+.ui-icon-home:after {
+    background-image: url("../img/home-icon.png");
+    background-size: 20px 20px;
+}
+
+.ui-icon-voice:after {
+    background-image: url("../img/mic-icon.png");
+    background-size: 20px 20px;
+}
+
+.ui-icon-charts:after {
+    background-image: url("../img/charts-icon.png");
+    background-size: 20px 20px;
+}

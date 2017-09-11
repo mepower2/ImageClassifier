@@ -20,16 +20,6 @@ var app = {
     onDeviceReady: function () {
         //app.receivedEvent('deviceready');
         $( "#first" ).click();
-        
-        var vizDiv = document.getElementById('viz');
-        var vizUrl = 'https://public.tableau.com/views/nikOrders_0/Sheet2';
-        var options = {
-            width: '400px',
-            height: '540px',
-            hideToolbar: true,   // When NOT on public server (Own licensed server, complete share/download part goes)
-            hideTabs: true
-        };
-        viz = new tableau.Viz(vizDiv, vizUrl, options);
     },
     // Update DOM on a Received Event
     receivedEvent: function (id) {
@@ -163,6 +153,11 @@ var app = {
                      console.error("The following error occurred: "+error);
                  });
             }
+            else {
+                var speechContainer = document.getElementById('speech');
+                speechContainer.style.backgroundImage = "url('img/speech-bg.png')";
+                speechContainer.onclick = app.startListening;
+            }
 
         }, function(error){
             console.error("The following error occurred: "+error);
@@ -177,6 +172,10 @@ var app = {
           language: 'en-US',
           matches: 1
         }
+
+        var speechContainer = document.getElementById('speech');
+        speechContainer.style.backgroundImage = "url('img/listen-bg.png')";
+        speechContainer.onclick = function() {console.log('Do nothing..');}
 
         function createEditFields(match, index) {
             var div = document.createElement('div');
@@ -203,6 +202,7 @@ var app = {
             button.style.background = 'none';
             button.style.border = 'none';
             button.style.cursor = 'pointer';
+            button.style.color = 'white';
             button.onclick = function() {
                 var field = document.getElementById('text' + index);
                 field.style.visibility = "visible";
@@ -216,6 +216,7 @@ var app = {
             buttonPub.style.background = 'none';
             buttonPub.style.border = 'none';
             buttonPub.style.cursor = 'pointer';
+            buttonPub.style.color = 'white';
             buttonPub.onclick = function() {
                 var uiField = document.getElementById('p-' + index);
                 window.alert('Publish ' + uiField.innerHTML + ' to server done');
@@ -249,5 +250,10 @@ var app = {
         elem.style.display = "none";
         document.getElementById("tabs").style.display = "block";
         document.getElementById("h1header").style.display = "block"
+    },
+
+    showChartDetails: function(imgPath) {
+        var chartImg = document.getElementById('chartsData');
+        chartImg.src = 'img/chart2.png';
     }
 };

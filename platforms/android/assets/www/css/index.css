@@ -45,6 +45,8 @@ body {
     width:100%;
 }
 
+html {margin:0;padding:0;height:100%;}
+
 /* Portrait layout (default) */
 .app {
     /* background:url(../img/logo.png) no-repeat center top; 170px x 200px */
@@ -150,6 +152,37 @@ h1 {
 
 .btnRegular {
     opacity: 0.8;
-    background: #38c !important;
+    background: grey !important;
     color: white !important;
+}
+
+.ui-mobile .ui-page {
+    min-height: 100% !important;
+}
+
+.ui-icon-home:after {
+    background-image: url("../img/home-icon.png");
+    background-size: 20px 20px;
+}
+
+.ui-icon-voice:after {
+    background-image: url("../img/mic-icon.png");
+    background-size: 20px 20px;
+}
+
+.ui-icon-charts:after {
+    background-image: url("../img/charts-icon.png");
+    background-size: 20px 20px;
+}
+
+.listener {
+    background-image: url('../img/speech-bg.png');
+    background-size: 100% 100%;
+    height: 120vw;
+    opacity: 0.7;
+}
+
+.ui-page-theme-a .ui-btn.ui-btn-active, html .ui-bar-a .ui-btn.ui-btn-active, html .ui-body-a .ui-btn.ui-btn-active, html body .ui-group-theme-a .ui-btn.ui-btn-active, html head+body .ui-btn.ui-btn-a.ui-btn-active, .ui-page-theme-a .ui-checkbox-on:after, html .ui-bar-a .ui-checkbox-on:after, html .ui-body-a .ui-checkbox-on:after, html body .ui-group-theme-a .ui-checkbox-on:after, .ui-btn.ui-checkbox-on.ui-btn-a:after, .ui-page-theme-a .ui-flipswitch-active, html .ui-bar-a .ui-flipswitch-active, html .ui-body-a .ui-flipswitch-active, html body .ui-group-theme-a .ui-flipswitch-active, html body .ui-flipswitch.ui-bar-a.ui-flipswitch-active, .ui-page-theme-a .ui-slider-track .ui-btn-active, html .ui-bar-a .ui-slider-track .ui-btn-active, html .ui-body-a .ui-slider-track .ui-btn-active, html body .ui-group-theme-a .ui-slider-track .ui-btn-active, html body div.ui-slider-track.ui-body-a .ui-btn-active {
+    background-color: grey !important;
+    border-color: grey !important;
 }
