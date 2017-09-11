@@ -151,9 +151,26 @@ var app = {
         }
 
         window.plugins.speechRecognition.isRecognitionAvailable(successCallback, errorCallback);
+
+        cordova.plugins.diagnostic.isMicrophoneAuthorized(function(authorized){
+            console.log("App is " + (authorized ? "authorized" : "denied") + " access to the microphone");
+            if(!authorized) {
+                cordova.plugins.diagnostic.requestMicrophoneAuthorization(function(status){
+                    if(status === cordova.plugins.diagnostic.permissionStatus.GRANTED){
+                        console.log("Microphone use is authorized");
+                    }
+                 }, function(error){
+                     console.error("The following error occurred: "+error);
+                 });
+            }
+
+        }, function(error){
+            console.error("The following error occurred: "+error);
+        });
     },
 
     startListening: function() {
+
         var elem = document.getElementById('speechResults');
         elem.innerHTML = "";
         let options = {
