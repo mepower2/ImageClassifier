@@ -47,7 +47,7 @@ var app = {
                 sourceType: srcType,
                 encodingType: Camera.EncodingType.JPEG,
                 mediaType: Camera.MediaType.PICTURE,
-                allowEdit: true,
+                allowEdit: false,
                 correctOrientation: true, //Corrects Android orientation quirks,
                 targetHeight: 100,
                 targetWidth: 100
