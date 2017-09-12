@@ -254,6 +254,6 @@ var app = {
 
     showChartDetails: function(imgPath) {
         var chartImg = document.getElementById('chartsData');
-        chartImg.src = 'img/chart2.png';
+        chartImg.src = imgPath;
     }
 };
