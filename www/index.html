@@ -26,20 +26,33 @@
         </div>
     
         <div id="image" class="home-bg" style="text-align:center;">
-            <button type="button" onclick="app.takePicture()" class="btnRegular">Click New..</button>
+            <fieldset data-role="controlgroup" data-type="horizontal">
+                <button type="button" onclick="app.takePicture()" class="btnRegular">Click New..</button>
+                <button type="button" onclick="app.lookupLibrary()" class="btnRegular">Photo Library..</button>
+            </fieldset>
             
-            <div id="imageContainer">
+            <div style="position:relative">
                 <ul id="imageGrid" data-inset="true">
                     <li style="display:none;">
                         <a href="#" class="camContainer">
                             <img src="img/photo_sample.png" class="camImg">
                             <h5></h5>
+                            <button class="ui-btn ui-btn-inline ui-icon-edit ui-btn-icon-notext no-styles" onclick="app.editImageText(this)">Edit</button>
+                            <button class="ui-btn ui-btn-inline ui-icon-delete ui-btn-icon-notext no-styles" onclick="app.deleteImage(this)">Delete</button>
                         </a>
                     </li>
                 </ul>
+
+                <div id="editImageText">
+                    <label for="updated-text" class="ui-hidden-accessible">Text input:</label>
+                    <input type="text" name="updated-text" data-clear-btn="true">
+                    <a href="#" onclick="app.updateImageText(this)">Update</a>
+                </div>
             </div>
             
-            <button type="button" onclick="app.analyzePicture()" class="ui-footer btnRegular">Analyze</button>
+            <button type="button" onclick="app.analyzePicture()" class="btnRegular ui-footer">Analyze</button>
+            <button type="button" onclick="app.publishAllImages()" class="btnRegular ui-footer" style="left:50%;">Publish</button>
+            
             <br />
             <label id="result" style="margin:auto;"> </label>
         </div>

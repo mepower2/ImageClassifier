@@ -142,6 +142,28 @@ h1 {
     background: white;
 }
 
+.camContainer button.ui-icon-edit {
+    position: absolute;
+    z-index: 1;
+    bottom: 130px;
+    right: 20%;
+    color: black;
+    background: white;
+    border-radius: 40px;
+    font-size: 12px;
+}
+
+.camContainer button.ui-icon-delete {
+    position: absolute;
+    z-index: 1;
+    bottom: 130px;
+    right: 0%;
+    color: black;
+    background: white;
+    border-radius: 40px;
+    font-size: 12px;
+}
+
 .ui-footer {
     position: fixed;
     left: 0;
@@ -192,4 +214,31 @@ h1 {
 .ui-page-theme-a .ui-btn.ui-btn-active, html .ui-bar-a .ui-btn.ui-btn-active, html .ui-body-a .ui-btn.ui-btn-active, html body .ui-group-theme-a .ui-btn.ui-btn-active, html head+body .ui-btn.ui-btn-a.ui-btn-active, .ui-page-theme-a .ui-checkbox-on:after, html .ui-bar-a .ui-checkbox-on:after, html .ui-body-a .ui-checkbox-on:after, html body .ui-group-theme-a .ui-checkbox-on:after, .ui-btn.ui-checkbox-on.ui-btn-a:after, .ui-page-theme-a .ui-flipswitch-active, html .ui-bar-a .ui-flipswitch-active, html .ui-body-a .ui-flipswitch-active, html body .ui-group-theme-a .ui-flipswitch-active, html body .ui-flipswitch.ui-bar-a.ui-flipswitch-active, .ui-page-theme-a .ui-slider-track .ui-btn-active, html .ui-bar-a .ui-slider-track .ui-btn-active, html .ui-body-a .ui-slider-track .ui-btn-active, html body .ui-group-theme-a .ui-slider-track .ui-btn-active, html body div.ui-slider-track.ui-body-a .ui-btn-active {
     background-color: grey !important;
     border-color: grey !important;
+}
+
+button.no-styles {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#editImageText {
+    display: none;
+    position: absolute;
+    z-index: 2;
+    top: 80vw;
+    left: 5%;
+    width: 90%;
+}
+
+button.ui-btn, .ui-controlgroup-controls button.ui-btn-icon-notext {
+    width: 50%;
+}
+
+.ui-controlgroup-horizontal .ui-controlgroup-controls {
+    width: 100% !important;
+}
+
+.ui-controlgroup-horizontal .ui-controlgroup-controls .ui-btn {
+    width: 40% !important;
 }

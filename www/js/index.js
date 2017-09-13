@@ -255,5 +255,42 @@ var app = {
     showChartDetails: function(imgPath) {
         var chartImg = document.getElementById('chartsData');
         chartImg.src = imgPath;
+    },
+
+    editImageText: function(selected) {
+        var analyzedTextElement = selected.parentNode.children[1];
+        if(analyzedTextElement.innerHTML === '') {
+            analyzedTextElement.innerHTML = 'Please analyze image 1st..';
+            return;
+        }
+
+        var editDiv = document.getElementById('editImageText');
+        editDiv.style.display = 'block';
+        editDiv.getElementsByTagName('input')[0].value = analyzedTextElement.innerHTML;
+        window.elemToEdit = analyzedTextElement;
+    },
+
+    deleteImage: function(selected) {
+        var parent = document.getElementById('imageGrid');
+        parent.removeChild(selected.parentNode.parentNode);
+    },
+
+    updateImageText: function(updateElement) {
+        updateElement.parentNode.style.display = "none";
+        var updatedText = updateElement.parentNode.getElementsByTagName('input')[0].value;
+        window.elemToEdit.innerHTML = updatedText;
+    },
+
+    lookupLibrary: function() {
+
+    },
+
+    publishAllImages: function() {
+        var parent = document.getElementById('imageGrid');
+        if(parent.children.length > 1) {
+            alert('Images uploaded to server..');
+        } else {
+            alert('Please click new images or import from library to upload');
+        }
     }
 };
