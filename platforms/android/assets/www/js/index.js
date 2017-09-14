@@ -98,7 +98,7 @@ var app = {
 
                     tf.classify(imageGrid.children[i].children[0].children[0].src.replace('data:image/jpeg;base64, ','')).then(results => {
                         ++index;
-                        imageGrid.children[index].children[0].children[1].innerHTML = results[0].title + "- " + results[0].confidence;
+                        imageGrid.children[index].children[0].children[1].innerHTML = results[0].title + "- " + parseFloat(results[0].confidence*100).toFixed(2);
                     });
                 }
             });
@@ -262,7 +262,7 @@ var app = {
     },
 
     lookupLibrary: function() {
-
+        
         window.imagePicker.getPictures(
             function(results) {
                 for (var i = 0; i < results.length; i++) {
@@ -273,7 +273,7 @@ var app = {
             }, function (error) {
                 console.log('Error: ' + error);
             }, {
-                maximumImagesCount: 10,
+                maximumImagesCount: 5,
                 width: 800
             }
         );
@@ -293,5 +293,20 @@ var app = {
         } else {
             alert('Please click new images or import from library to upload');
         }
+    },
+
+    requestLibraryPrivilege: function() {
+        cordova.plugins.photoLibrary.requestAuthorization(
+            () => {
+                console.log('Library permission granted');
+            },
+            (err) => {
+                console.log('User denied the access');
+            }, // if options not provided, defaults to {read: true}.
+            {
+              read: true,
+              write: true
+            }
+        );
     }
 };

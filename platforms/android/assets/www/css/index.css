@@ -231,6 +231,8 @@ button.no-styles {
     top: 80vw;
     left: 5%;
     width: 90%;
+    background-color: aliceblue;
+    border-radius: 10px;
 }
 
 button.ui-btn, .ui-controlgroup-controls button.ui-btn-icon-notext {

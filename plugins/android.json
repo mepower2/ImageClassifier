@@ -78,6 +78,9 @@
         },
         "com-badrit-base64": {
             "PACKAGE_NAME": "mw.whirlpool.poc"
+        },
+        "cordova-plugin-photo-library": {
+            "PACKAGE_NAME": "mw.whirlpool.poc"
         }
     },
     "dependent_plugins": {

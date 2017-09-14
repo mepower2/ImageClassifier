@@ -35,7 +35,10 @@
             },
             "cordova.plugins.diagnostic": {},
             "cordova-plugin-image-picker": {},
-            "com-badrit-base64": {}
+            "com-badrit-base64": {},
+            "cordova-plugin-photo-library": {
+                "PHOTO_LIBRARY_USAGE_DESCRIPTION": "To choose photos"
+            }
         }
     },
     "dependencies": {
@@ -58,6 +61,7 @@
         "cordova-plugin-media": "~2.2.0",
         "cordova-plugin-media-capture": "^1.4.3",
         "cordova-plugin-network-information": "~1.2.0",
+        "cordova-plugin-photo-library": "^2.1.0",
         "cordova-plugin-speechrecognition": "^1.1.2",
         "cordova-plugin-splashscreen": "~3.2.1",
         "cordova-plugin-statusbar": "~2.1.2",

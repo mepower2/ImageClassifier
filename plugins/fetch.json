@@ -216,5 +216,15 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "cordova-plugin-photo-library": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-photo-library"
+        },
+        "is_top_level": true,
+        "variables": {
+            "PHOTO_LIBRARY_USAGE_DESCRIPTION": "To choose photos"
+        }
     }
 }

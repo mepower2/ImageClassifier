@@ -19,7 +19,7 @@
     <div data-role="tabs" id="tabs" style="display:none;width:100%;">
         <div data-role="navbar">
             <ul>
-                <li><a href="#image" data-role="button" id="first" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-top ui-icon-home">Home</a></li>
+                <li><a href="#image" data-role="button" id="first" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-top ui-icon-home" onclick="app.requestLibraryPrivilege()">Home</a></li>
                 <li><a href="#speech" data-role="button" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-top ui-icon-voice" onclick="app.getPermission()">Voice</a></li>
                 <li><a href="#dashboard" data-role="button" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-top ui-icon-charts" onclick="app.showChartDetails('img/chart1.png')">Charts</a></li>
             </ul>

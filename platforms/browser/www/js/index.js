@@ -3,7 +3,6 @@ var app = {
     // Application Constructor
     initialize: function () {
         this.bindEvents();
-        window.Testingimages = [];
     },
     // Bind Event Listeners
     //
@@ -53,8 +52,6 @@ var app = {
             navigator.camera.getPicture(function cameraSuccess(imageUri) {
 
                 app.displayImage(imageUri);
-                window.Testingimages = [];
-                window.Testingimages.push(imageUri);
             }, function cameraError(error) {
                 console.debug("Unable to obtain picture: " + error, "app");
 
@@ -101,7 +98,7 @@ var app = {
 
                     tf.classify(imageGrid.children[i].children[0].children[0].src.replace('data:image/jpeg;base64, ','')).then(results => {
                         ++index;
-                        imageGrid.children[index].children[0].children[1].innerHTML = results[0].title + "- " + results[0].confidence;
+                        imageGrid.children[index].children[0].children[1].innerHTML = results[0].title + "- " + parseFloat(results[0].confidence*100).toFixed(2);
                     });
                 }
             });
@@ -269,12 +266,14 @@ var app = {
         window.imagePicker.getPictures(
             function(results) {
                 for (var i = 0; i < results.length; i++) {
-                    console.log('Image URI: ' + results[i]);
+                    window.plugins.Base64.encodeFile(results[i], (imgData => {
+                        app.displayImage(imgData.replace('data:image/*;charset=utf-8;base64,',''));
+                    }));
                 }
             }, function (error) {
                 console.log('Error: ' + error);
             }, {
-                maximumImagesCount: 10,
+                maximumImagesCount: 5,
                 width: 800
             }
         );

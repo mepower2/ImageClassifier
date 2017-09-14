@@ -577,6 +577,24 @@ module.exports = [
         "clobbers": [
             "navigator.Base64"
         ]
+    },
+    {
+        "id": "cordova-plugin-photo-library.PhotoLibrary",
+        "file": "plugins/cordova-plugin-photo-library/www/PhotoLibrary.js",
+        "pluginId": "cordova-plugin-photo-library",
+        "clobbers": [
+            "cordova.plugins.photoLibrary"
+        ]
+    },
+    {
+        "id": "cordova-plugin-photo-library.async",
+        "file": "plugins/cordova-plugin-photo-library/www/async/dist/async.min.js",
+        "pluginId": "cordova-plugin-photo-library"
+    },
+    {
+        "id": "cordova-plugin-photo-library.async_map",
+        "file": "plugins/cordova-plugin-photo-library/www/async/dist/async.min.map",
+        "pluginId": "cordova-plugin-photo-library"
     }
 ];
 module.exports.metadata = 
@@ -608,7 +626,8 @@ module.exports.metadata =
     "cordova-plugin-media-capture": "1.4.3",
     "cordova.plugins.diagnostic": "3.6.7",
     "cordova-plugin-image-picker": "1.1.1",
-    "com-badrit-base64": "0.2.0"
+    "com-badrit-base64": "0.2.0",
+    "cordova-plugin-photo-library": "2.1.0"
 };
 // BOTTOM OF METADATA
 });
