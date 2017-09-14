@@ -3,7 +3,6 @@ var app = {
     // Application Constructor
     initialize: function () {
         this.bindEvents();
-        window.Testingimages = [];
     },
     // Bind Event Listeners
     //
@@ -23,14 +22,22 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function (id) {
-        // var parentElement = document.getElementById(id);
-        // var listeningElement = parentElement.querySelector('.listening');
-        // var receivedElement = parentElement.querySelector('.received');
+    },
 
-        // listeningElement.setAttribute('style', 'display:none;');
-        // receivedElement.setAttribute('style', 'display:block;');
-
-        // console.log('Received Event: ' + id);
+    getCameraOptions: function(srcType) {
+        return {
+            // Some common settings are 20, 50, and 100
+            quality: 100,
+            destinationType: Camera.DestinationType.DATA_URL,//Camera.DestinationType.DATA_URL,
+            // In this app, dynamically set the picture source, Camera or photo gallery
+            sourceType: srcType,
+            encodingType: Camera.EncodingType.JPEG,
+            mediaType: Camera.MediaType.PICTURE,
+            allowEdit: false,
+            correctOrientation: true, //Corrects Android orientation quirks,
+            targetHeight: 100,
+            targetWidth: 100
+        }
     },
 
     takePicture: function () {
@@ -38,54 +45,27 @@ var app = {
         openCamera();
         document.getElementById('result').innerHTML="";
 
-        function setOptions(srcType) {
-            var options = {
-                // Some common settings are 20, 50, and 100
-                quality: 100,
-                destinationType: Camera.DestinationType.DATA_URL,//Camera.DestinationType.DATA_URL,
-                // In this app, dynamically set the picture source, Camera or photo gallery
-                sourceType: srcType,
-                encodingType: Camera.EncodingType.JPEG,
-                mediaType: Camera.MediaType.PICTURE,
-                allowEdit: false,
-                correctOrientation: true, //Corrects Android orientation quirks,
-                targetHeight: 100,
-                targetWidth: 100
-            }
-            return options;
-        }
-
         function openCamera(selection) {
 
-            var srcType = Camera.PictureSourceType.CAMERA;
-            var options = setOptions(srcType);
-            //var func = createNewFileEntry;
-            var that = this;        
-
+            var options = app.getCameraOptions(Camera.PictureSourceType.CAMERA);
+            
             navigator.camera.getPicture(function cameraSuccess(imageUri) {
 
-                displayImage(imageUri);
-                window.Testingimages = [];
-                window.Testingimages.push(imageUri);
-                    // You may choose to copy the picture, save it somewhere, or upload.
-                    //func(imageUri);
-
-
+                app.displayImage(imageUri);
             }, function cameraError(error) {
                 console.debug("Unable to obtain picture: " + error, "app");
 
             }, options);
         }
+    },
 
-        function displayImage(imgUri) {
-
-            var parent = document.getElementById('imageGrid');
-            var template = $('#imageGrid li')[0];
-            var newElem = template.cloneNode(true);
-            newElem.style.display = "block";
-            newElem.children[0].children[0].src = "data:image/jpeg;base64, " + imgUri;
-            parent.appendChild(newElem);
-        }
+    displayImage: function (imgUri) {
+        var parent = document.getElementById('imageGrid');
+        var template = $('#imageGrid li')[0];
+        var newElem = template.cloneNode(true);
+        newElem.style.display = "block";
+        newElem.children[0].children[0].src = "data:image/jpeg;base64, " + imgUri;
+        parent.appendChild(newElem);
     },
 
     analyzePicture: function () {
@@ -283,6 +263,27 @@ var app = {
 
     lookupLibrary: function() {
 
+        window.imagePicker.getPictures(
+            function(results) {
+                for (var i = 0; i < results.length; i++) {
+                    window.plugins.Base64.encodeFile(results[i], (imgData => {
+                        app.displayImage(imgData.replace('data:image/*;charset=utf-8;base64,',''));
+                    }));
+                }
+            }, function (error) {
+                console.log('Error: ' + error);
+            }, {
+                maximumImagesCount: 5,
+                width: 800
+            }
+        );
+
+        // var options = app.getCameraOptions(Camera.PictureSourceType.PHOTOLIBRARY);
+        // navigator.camera.getPicture(function cameraSuccess(imageUri) {
+        //     app.displayImage(imageUri);
+        // }, function cameraError(error) {
+        //     console.debug("Unable to obtain picture: " + error, "app");
+        // }, options);
     },
 
     publishAllImages: function() {

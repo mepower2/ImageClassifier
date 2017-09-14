@@ -200,5 +200,21 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "cordova-plugin-image-picker": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-image-picker"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com-badrit-base64": {
+        "source": {
+            "type": "registry",
+            "id": "https://github.com/hazemhagrass/phonegap-base64.git"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

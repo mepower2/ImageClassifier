@@ -20,27 +20,25 @@ var app = {
     onDeviceReady: function () {
         //app.receivedEvent('deviceready');
         $( "#first" ).click();
-        
-        var vizDiv = document.getElementById('viz');
-        var vizUrl = 'https://public.tableau.com/views/nikOrders_0/Sheet2';
-        var options = {
-            width: '400px',
-            height: '540px',
-            hideToolbar: true,   // When NOT on public server (Own licensed server, complete share/download part goes)
-            hideTabs: true
-        };
-        viz = new tableau.Viz(vizDiv, vizUrl, options);
     },
     // Update DOM on a Received Event
     receivedEvent: function (id) {
-        // var parentElement = document.getElementById(id);
-        // var listeningElement = parentElement.querySelector('.listening');
-        // var receivedElement = parentElement.querySelector('.received');
+    },
 
-        // listeningElement.setAttribute('style', 'display:none;');
-        // receivedElement.setAttribute('style', 'display:block;');
-
-        // console.log('Received Event: ' + id);
+    getCameraOptions: function(srcType) {
+        return {
+            // Some common settings are 20, 50, and 100
+            quality: 100,
+            destinationType: Camera.DestinationType.DATA_URL,//Camera.DestinationType.DATA_URL,
+            // In this app, dynamically set the picture source, Camera or photo gallery
+            sourceType: srcType,
+            encodingType: Camera.EncodingType.JPEG,
+            mediaType: Camera.MediaType.PICTURE,
+            allowEdit: false,
+            correctOrientation: true, //Corrects Android orientation quirks,
+            targetHeight: 100,
+            targetWidth: 100
+        }
     },
 
     takePicture: function () {
@@ -48,54 +46,29 @@ var app = {
         openCamera();
         document.getElementById('result').innerHTML="";
 
-        function setOptions(srcType) {
-            var options = {
-                // Some common settings are 20, 50, and 100
-                quality: 100,
-                destinationType: Camera.DestinationType.DATA_URL,//Camera.DestinationType.DATA_URL,
-                // In this app, dynamically set the picture source, Camera or photo gallery
-                sourceType: srcType,
-                encodingType: Camera.EncodingType.JPEG,
-                mediaType: Camera.MediaType.PICTURE,
-                allowEdit: true,
-                correctOrientation: true, //Corrects Android orientation quirks,
-                targetHeight: 100,
-                targetWidth: 100
-            }
-            return options;
-        }
-
         function openCamera(selection) {
 
-            var srcType = Camera.PictureSourceType.CAMERA;
-            var options = setOptions(srcType);
-            //var func = createNewFileEntry;
-            var that = this;        
-
+            var options = app.getCameraOptions(Camera.PictureSourceType.CAMERA);
+            
             navigator.camera.getPicture(function cameraSuccess(imageUri) {
 
-                displayImage(imageUri);
+                app.displayImage(imageUri);
                 window.Testingimages = [];
                 window.Testingimages.push(imageUri);
-                    // You may choose to copy the picture, save it somewhere, or upload.
-                    //func(imageUri);
-
-
             }, function cameraError(error) {
                 console.debug("Unable to obtain picture: " + error, "app");
 
             }, options);
         }
+    },
 
-        function displayImage(imgUri) {
-
-            var parent = document.getElementById('imageGrid');
-            var template = $('#imageGrid li')[0];
-            var newElem = template.cloneNode(true);
-            newElem.style.display = "block";
-            newElem.children[0].children[0].src = "data:image/jpeg;base64, " + imgUri;
-            parent.appendChild(newElem);
-        }
+    displayImage: function (imgUri) {
+        var parent = document.getElementById('imageGrid');
+        var template = $('#imageGrid li')[0];
+        var newElem = template.cloneNode(true);
+        newElem.style.display = "block";
+        newElem.children[0].children[0].src = "data:image/jpeg;base64, " + imgUri;
+        parent.appendChild(newElem);
     },
 
     analyzePicture: function () {
@@ -163,6 +136,11 @@ var app = {
                      console.error("The following error occurred: "+error);
                  });
             }
+            else {
+                var speechContainer = document.getElementById('speech');
+                speechContainer.style.backgroundImage = "url('img/speech-bg.png')";
+                speechContainer.onclick = app.startListening;
+            }
 
         }, function(error){
             console.error("The following error occurred: "+error);
@@ -177,6 +155,10 @@ var app = {
           language: 'en-US',
           matches: 1
         }
+
+        var speechContainer = document.getElementById('speech');
+        speechContainer.style.backgroundImage = "url('img/listen-bg.png')";
+        speechContainer.onclick = function() {console.log('Do nothing..');}
 
         function createEditFields(match, index) {
             var div = document.createElement('div');
@@ -203,6 +185,7 @@ var app = {
             button.style.background = 'none';
             button.style.border = 'none';
             button.style.cursor = 'pointer';
+            button.style.color = 'white';
             button.onclick = function() {
                 var field = document.getElementById('text' + index);
                 field.style.visibility = "visible";
@@ -216,6 +199,7 @@ var app = {
             buttonPub.style.background = 'none';
             buttonPub.style.border = 'none';
             buttonPub.style.cursor = 'pointer';
+            buttonPub.style.color = 'white';
             buttonPub.onclick = function() {
                 var uiField = document.getElementById('p-' + index);
                 window.alert('Publish ' + uiField.innerHTML + ' to server done');
@@ -249,5 +233,66 @@ var app = {
         elem.style.display = "none";
         document.getElementById("tabs").style.display = "block";
         document.getElementById("h1header").style.display = "block"
+    },
+
+    showChartDetails: function(imgPath) {
+        var chartImg = document.getElementById('chartsData');
+        chartImg.src = imgPath;
+    },
+
+    editImageText: function(selected) {
+        var analyzedTextElement = selected.parentNode.children[1];
+        if(analyzedTextElement.innerHTML === '') {
+            analyzedTextElement.innerHTML = 'Please analyze image 1st..';
+            return;
+        }
+
+        var editDiv = document.getElementById('editImageText');
+        editDiv.style.display = 'block';
+        editDiv.getElementsByTagName('input')[0].value = analyzedTextElement.innerHTML;
+        window.elemToEdit = analyzedTextElement;
+    },
+
+    deleteImage: function(selected) {
+        var parent = document.getElementById('imageGrid');
+        parent.removeChild(selected.parentNode.parentNode);
+    },
+
+    updateImageText: function(updateElement) {
+        updateElement.parentNode.style.display = "none";
+        var updatedText = updateElement.parentNode.getElementsByTagName('input')[0].value;
+        window.elemToEdit.innerHTML = updatedText;
+    },
+
+    lookupLibrary: function() {
+
+        window.imagePicker.getPictures(
+            function(results) {
+                for (var i = 0; i < results.length; i++) {
+                    console.log('Image URI: ' + results[i]);
+                }
+            }, function (error) {
+                console.log('Error: ' + error);
+            }, {
+                maximumImagesCount: 10,
+                width: 800
+            }
+        );
+
+        // var options = app.getCameraOptions(Camera.PictureSourceType.PHOTOLIBRARY);
+        // navigator.camera.getPicture(function cameraSuccess(imageUri) {
+        //     app.displayImage(imageUri);
+        // }, function cameraError(error) {
+        //     console.debug("Unable to obtain picture: " + error, "app");
+        // }, options);
+    },
+
+    publishAllImages: function() {
+        var parent = document.getElementById('imageGrid');
+        if(parent.children.length > 1) {
+            alert('Images uploaded to server..');
+        } else {
+            alert('Please click new images or import from library to upload');
+        }
     }
 };

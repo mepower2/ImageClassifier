@@ -632,6 +632,22 @@ module.exports = [
         "id": "cordova-plugin-media-capture.CaptureProxy",
         "pluginId": "cordova-plugin-media-capture",
         "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-image-picker/www/imagepicker.js",
+        "id": "cordova-plugin-image-picker.ImagePicker",
+        "pluginId": "cordova-plugin-image-picker",
+        "clobbers": [
+            "plugins.imagePicker"
+        ]
+    },
+    {
+        "file": "plugins/com-badrit-base64/www/Base64.js",
+        "id": "com-badrit-base64.Base64",
+        "pluginId": "com-badrit-base64",
+        "clobbers": [
+            "navigator.Base64"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -661,7 +677,9 @@ module.exports.metadata =
     "cordova-plugin-speechrecognition": "1.1.2",
     "cordova-plugin-camera": "2.4.2-dev",
     "cordova-plugin-media-capture": "1.4.3",
-    "cordova.plugins.diagnostic": "3.6.7"
+    "cordova.plugins.diagnostic": "3.6.7",
+    "cordova-plugin-image-picker": "1.1.1",
+    "com-badrit-base64": "0.2.0"
 }
 // BOTTOM OF METADATA
 });

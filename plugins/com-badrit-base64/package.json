@@ -1,0 +1,87 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "https://github.com/hazemhagrass/phonegap-base64.git",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "https://github.com/hazemhagrass/phonegap-base64.git",
+        "spec": "git+https://github.com/hazemhagrass/phonegap-base64.git",
+        "type": "hosted",
+        "hosted": {
+          "type": "github",
+          "ssh": "git@github.com:hazemhagrass/phonegap-base64.git",
+          "sshUrl": "git+ssh://git@github.com/hazemhagrass/phonegap-base64.git",
+          "httpsUrl": "git+https://github.com/hazemhagrass/phonegap-base64.git",
+          "gitUrl": "git://github.com/hazemhagrass/phonegap-base64.git",
+          "shortcut": "github:hazemhagrass/phonegap-base64",
+          "directUrl": "https://raw.githubusercontent.com/hazemhagrass/phonegap-base64/master/package.json"
+        }
+      },
+      "C:\\Users\\nikhil.rana\\bitbucket\\ImageClassifier\\node_modules"
+    ]
+  ],
+  "_from": "git+https://github.com/hazemhagrass/phonegap-base64.git",
+  "_id": "com-badrit-base64@0.2.0",
+  "_inCache": true,
+  "_location": "/com-badrit-base64",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "https://github.com/hazemhagrass/phonegap-base64.git",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "https://github.com/hazemhagrass/phonegap-base64.git",
+    "spec": "git+https://github.com/hazemhagrass/phonegap-base64.git",
+    "type": "hosted",
+    "hosted": {
+      "type": "github",
+      "ssh": "git@github.com:hazemhagrass/phonegap-base64.git",
+      "sshUrl": "git+ssh://git@github.com/hazemhagrass/phonegap-base64.git",
+      "httpsUrl": "git+https://github.com/hazemhagrass/phonegap-base64.git",
+      "gitUrl": "git://github.com/hazemhagrass/phonegap-base64.git",
+      "shortcut": "github:hazemhagrass/phonegap-base64",
+      "directUrl": "https://raw.githubusercontent.com/hazemhagrass/phonegap-base64/master/package.json"
+    }
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/hazemhagrass/phonegap-base64.git#41e764dde25e21256447a71a124e01b96d65ea3e",
+  "_shasum": "ee2a8df101e87f2388f16172e5d68626c7564f48",
+  "_shrinkwrap": null,
+  "_spec": "https://github.com/hazemhagrass/phonegap-base64.git",
+  "_where": "C:\\Users\\nikhil.rana\\bitbucket\\ImageClassifier\\node_modules",
+  "bugs": {
+    "url": "https://github.com/hazemhagrass/phonegap-base64/issues"
+  },
+  "cordova": {
+    "id": "com-badrit-base64",
+    "platforms": [
+      "android"
+    ]
+  },
+  "dependencies": {},
+  "description": "Cordova Base64 Plugin",
+  "devDependencies": {},
+  "gitHead": "41e764dde25e21256447a71a124e01b96d65ea3e",
+  "homepage": "https://github.com/hazemhagrass/phonegap-base64#readme",
+  "keywords": [
+    "cordova",
+    "base64",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "license": "MIT",
+  "name": "com-badrit-base64",
+  "optionalDependencies": {},
+  "readme": "Image Base64 plugin for Cordova / PhoneGap\r\n======================================================\r\n\r\nThis Plugin is used to encode base64 of any image, it uses js code for iOS, but in case of android it uses native code to handle android versions lower than v.3\r\n\r\n## Usage\r\n\r\nExample Usage: \r\n\r\n```js\r\n//filePath is the absolute path to the file(/mnt/sdcard/...)\r\nwindow.plugins.Base64.encodeFile(filePath, function(base64){\r\n \t\t\tconsole.log('file base64 encoding: ' + base64);\r\n \t\t});\r\n```\r\n\r\n## Installation \r\n\r\nfor Cordova >= 3.0.0\r\n\r\nphonegap local plugin add https://github.com/hazemhagrass/phonegap-base64.git\r\n\r\ncordova plugin add https://github.com/hazemhagrass/phonegap-base64.git\r\n\r\nfor Cordova >= 5.0.0\r\n\r\ncordova plugin add com-badrit-base64\r\n\r\nThis has been successfully tested on Cordova 3.0 to 3.1.\r\n\r\n## MIT Licence\r\n\r\nCopyright 2013 Monday Consulting GmbH\r\n\r\nPermission is hereby granted, free of charge, to any person obtaining\r\na copy of this software and associated documentation files (the\r\n\"Software\"), to deal in the Software without restriction, including\r\nwithout limitation the rights to use, copy, modify, merge, publish,\r\ndistribute, sublicense, and/or sell copies of the Software, and to\r\npermit persons to whom the Software is furnished to do so, subject to\r\nthe following conditions:\r\n\r\nThe above copyright notice and this permission notice shall be\r\nincluded in all copies or substantial portions of the Software.\r\n\r\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\r\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\r\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND\r\nNONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE\r\nLIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION\r\nOF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION\r\nWITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\r\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hazemhagrass/phonegap-base64.git"
+  },
+  "version": "0.2.0"
+}

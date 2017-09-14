@@ -72,6 +72,12 @@
         },
         "cordova.plugins.diagnostic": {
             "PACKAGE_NAME": "mw.whirlpool.poc"
+        },
+        "cordova-plugin-image-picker": {
+            "PACKAGE_NAME": "mw.whirlpool.poc"
+        },
+        "com-badrit-base64": {
+            "PACKAGE_NAME": "mw.whirlpool.poc"
         }
     },
     "dependent_plugins": {

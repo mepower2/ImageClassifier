@@ -33,10 +33,13 @@
                 "MICROPHONE_USAGE_DESCRIPTION": "App would like to access the microphone.",
                 "PHOTOLIBRARY_USAGE_DESCRIPTION": "App would like to access the library."
             },
-            "cordova.plugins.diagnostic": {}
+            "cordova.plugins.diagnostic": {},
+            "cordova-plugin-image-picker": {},
+            "com-badrit-base64": {}
         }
     },
     "dependencies": {
+        "com-badrit-base64": "git+https://github.com/hazemhagrass/phonegap-base64.git",
         "cordova-android": "~6.2.3",
         "cordova-plugin-battery-status": "~1.1.1",
         "cordova-plugin-camera": "git+https://github.com/apache/cordova-plugin-camera.git",
@@ -50,6 +53,7 @@
         "cordova-plugin-file-transfer": "~1.5.0",
         "cordova-plugin-geolocation": "~2.1.0",
         "cordova-plugin-globalization": "~1.0.3",
+        "cordova-plugin-image-picker": "^1.1.3",
         "cordova-plugin-inappbrowser": "~1.3.0",
         "cordova-plugin-media": "~2.2.0",
         "cordova-plugin-media-capture": "^1.4.3",
