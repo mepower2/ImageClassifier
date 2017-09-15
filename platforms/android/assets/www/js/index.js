@@ -71,15 +71,15 @@ var app = {
     analyzePicture: function () {
         var elem = document.getElementById('result');
         var imageGrid = document.getElementById('imageGrid');        
-        //var tf = new TensorFlow('inception-v1');
+        // var tf = new TensorFlow('inception-v3');
         var tf = new TensorFlow('custom-model', {
             'label': 'My Custom Model',
             'model_path': "www/files/retrained_graph.pb",//"https://www.dropbox.com/s/x20zu9ah73he19p/custom-model.zip?dl=1#retrained_graph.pb",//"https://files.fm/down.php?i=k4tm6wsy&n=custom-model.zip#retrained_graph.pb",
             'label_path': "www/files/retrained_labels.txt",//"https://www.dropbox.com/s/x20zu9ah73he19p/custom-model.zip?dl=1#retrained_labels.txt",//"https://files.fm/down.php?i=k4tm6wsy&n=custom-model.zip#retrained_labels.txt",
-            'input_size': 224,
+            'input_size': 299, // 224 for v1/MobileNet, 299 for Inception v3
             'image_mean': 128,
             'image_std': 128,
-            'input_name': 'input',  // 'Mul' for v3, 'input' for v1/mobile-net
+            'input_name': 'Mul',  // 'Mul' for v3, 'input' for v1/MobileNet
             'output_name': 'final_result'
         });
 
