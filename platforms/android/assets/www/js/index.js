@@ -4,31 +4,19 @@ var app = {
     initialize: function () {
         this.bindEvents();
     },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-
-    bindEvents: function () {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
+    
     onDeviceReady: function () {
         //app.receivedEvent('deviceready');
-        $( "#first" ).click();
+        $("#first").click();
     },
     // Update DOM on a Received Event
-    receivedEvent: function (id) {
-    },
+    receivedEvent: function (id) {},
 
-    getCameraOptions: function(srcType) {
+    getCameraOptions: function (srcType) {
         return {
             // Some common settings are 20, 50, and 100
             quality: 100,
-            destinationType: Camera.DestinationType.DATA_URL,//Camera.DestinationType.DATA_URL,
+            destinationType: Camera.DestinationType.DATA_URL, //Camera.DestinationType.DATA_URL,
             // In this app, dynamically set the picture source, Camera or photo gallery
             sourceType: srcType,
             encodingType: Camera.EncodingType.JPEG,
@@ -43,12 +31,12 @@ var app = {
     takePicture: function () {
 
         openCamera();
-        document.getElementById('result').innerHTML="";
+        document.getElementById('result').innerHTML = "";
 
         function openCamera(selection) {
 
             var options = app.getCameraOptions(Camera.PictureSourceType.CAMERA);
-            
+
             navigator.camera.getPicture(function cameraSuccess(imageUri) {
 
                 app.displayImage(imageUri);
@@ -70,92 +58,91 @@ var app = {
 
     analyzePicture: function () {
         var elem = document.getElementById('result');
-        var imageGrid = document.getElementById('imageGrid');        
+        var imageGrid = document.getElementById('imageGrid');
         // var tf = new TensorFlow('inception-v3');
         var tf = new TensorFlow('custom-model', {
             'label': 'My Custom Model',
-            'model_path': "www/files/retrained_graph.pb",//"https://www.dropbox.com/s/x20zu9ah73he19p/custom-model.zip?dl=1#retrained_graph.pb",//"https://files.fm/down.php?i=k4tm6wsy&n=custom-model.zip#retrained_graph.pb",
-            'label_path': "www/files/retrained_labels.txt",//"https://www.dropbox.com/s/x20zu9ah73he19p/custom-model.zip?dl=1#retrained_labels.txt",//"https://files.fm/down.php?i=k4tm6wsy&n=custom-model.zip#retrained_labels.txt",
+            'model_path': "www/files/retrained_graph_9_15.pb", //"https://www.dropbox.com/s/x20zu9ah73he19p/custom-model.zip?dl=1#retrained_graph.pb",//"https://files.fm/down.php?i=k4tm6wsy&n=custom-model.zip#retrained_graph.pb",
+            'label_path': "www/files/retrained_labels.txt", //"https://www.dropbox.com/s/x20zu9ah73he19p/custom-model.zip?dl=1#retrained_labels.txt",//"https://files.fm/down.php?i=k4tm6wsy&n=custom-model.zip#retrained_labels.txt",
             'input_size': 224, // 224 for v1/MobileNet, 299 for Inception v3
             'image_mean': 128,
             'image_std': 128,
-            'input_name': 'input',  // 'Mul' for v3, 'input' for v1/MobileNet
+            'input_name': 'input', // 'Mul' for v3, 'input' for v1/MobileNet
             'output_name': 'final_result'
         });
 
-        if(imageGrid.children.length <= 1) {
+        if (imageGrid.children.length <= 1) {
             elem.innerHTML = "Please click photo for analysis..";
             return;
-        }
-        else {
+        } else {
             elem.innerHTML = "";
-            
+
             tf.load().then(() => {
                 console.log('Model Loaded');
-                
-                var index = 0;
-                for(var i=1; i<imageGrid.children.length; i++) {
 
-                    tf.classify(imageGrid.children[i].children[0].children[0].src.replace('data:image/jpeg;base64, ','')).then(results => {
+                var index = 0;
+                for (var i = 1; i < imageGrid.children.length; i++) {
+
+                    tf.classify(imageGrid.children[i].children[0].children[0].src.replace('data:image/jpeg;base64, ', '')).then(results => {
                         ++index;
-                        imageGrid.children[index].children[0].children[1].innerHTML = results[0].title + "- " + parseFloat(results[0].confidence*100).toFixed(2);
+                        imageGrid.children[index].children[0].children[1].innerHTML = results[0].title + "- " + parseFloat(results[0].confidence * 100).toFixed(2);
                     });
                 }
             });
         }
     },
 
-    getPermission: function() {
+    getPermission: function () {
         var successCallback = (hasPermission) => {
-            if(!hasPermission) {
+            if (!hasPermission) {
                 window.plugins.speechRecognition.requestPermission(
-                    () => console.log('Permission Granted!'), 
-                    () => console.log('Permission Denied!'))
+                    () => console.log('Permission Granted!'), () => console.log('Permission Denied!'))
             }
-            if(cordova.platformId === 'ios') {
+            if (cordova.platformId === 'ios') {
                 document.getElementById("btnStopListening").style.visibility = "visible";
             }
         }
-        var errorCallback = function(hasPermission) {
+        var errorCallback = function (hasPermission) {
             console.log('Error while requesting permission');
         }
 
         window.plugins.speechRecognition.isRecognitionAvailable(successCallback, errorCallback);
 
-        cordova.plugins.diagnostic.isMicrophoneAuthorized(function(authorized){
+        cordova.plugins.diagnostic.isMicrophoneAuthorized(function (authorized) {
             console.log("App is " + (authorized ? "authorized" : "denied") + " access to the microphone");
-            if(!authorized) {
-                cordova.plugins.diagnostic.requestMicrophoneAuthorization(function(status){
-                    if(status === cordova.plugins.diagnostic.permissionStatus.GRANTED){
+            if (!authorized) {
+                cordova.plugins.diagnostic.requestMicrophoneAuthorization(function (status) {
+                    if (status === cordova.plugins.diagnostic.permissionStatus.GRANTED) {
                         console.log("Microphone use is authorized");
                     }
-                 }, function(error){
-                     console.error("The following error occurred: "+error);
-                 });
-            }
-            else {
+                }, function (error) {
+                    console.error("The following error occurred: " + error);
+                });
+            } else {
                 var speechContainer = document.getElementById('speech');
                 speechContainer.style.backgroundImage = "url('img/speech-bg.png')";
                 speechContainer.onclick = app.startListening;
             }
 
-        }, function(error){
-            console.error("The following error occurred: "+error);
+        }, function (error) {
+            console.error("The following error occurred: " + error);
         });
     },
 
-    startListening: function() {
+    startListening: function () {
 
         var elem = document.getElementById('speechResults');
         elem.innerHTML = "";
         let options = {
-          language: 'en-US',
-          matches: 1
+            language: 'en-US',
+            matches: 1
         }
 
         var speechContainer = document.getElementById('speech');
         speechContainer.style.backgroundImage = "url('img/listen-bg.png')";
-        speechContainer.onclick = function() {console.log('Do nothing..');}
+        speechContainer.onclick = function () {
+            console.log('Do nothing..');
+        }
 
         function createEditFields(match, index) {
             var div = document.createElement('div');
@@ -168,7 +155,7 @@ var app = {
             buttonUpdate.id = 'button2' + index;
             buttonUpdate.innerHTML = '<u>Update</u>';
             buttonUpdate.style.visibility = "hidden";
-            buttonUpdate.onclick = function() {
+            buttonUpdate.onclick = function () {
                 var field = document.getElementById('text' + index);
                 var uiField = document.getElementById('p-' + index);
                 uiField.innerHTML = field.value;
@@ -183,7 +170,7 @@ var app = {
             button.style.border = 'none';
             button.style.cursor = 'pointer';
             button.style.color = 'white';
-            button.onclick = function() {
+            button.onclick = function () {
                 var field = document.getElementById('text' + index);
                 field.style.visibility = "visible";
                 var field2 = document.getElementById('button2' + index);
@@ -197,7 +184,7 @@ var app = {
             buttonPub.style.border = 'none';
             buttonPub.style.cursor = 'pointer';
             buttonPub.style.color = 'white';
-            buttonPub.onclick = function() {
+            buttonPub.onclick = function () {
                 var uiField = document.getElementById('p-' + index);
                 window.alert('Publish ' + uiField.innerHTML + ' to server done');
             };
@@ -211,35 +198,34 @@ var app = {
         }
 
         window.plugins.speechRecognition.startListening(matches => {
-            var index = -1;
-            matches.forEach(match => {
-                index++;
-                elem.innerHTML += "<p id=\"p-"+ index +"\">" + match + "</p>&nbsp;&nbsp;";
-                elem.appendChild(createEditFields(match, index));
-            });
-          },
-        (onerror) => console.log('error: ' + onerror),
-        options);
+                var index = -1;
+                matches.forEach(match => {
+                    index++;
+                    elem.innerHTML += "<p id=\"p-" + index + "\">" + match + "</p>&nbsp;&nbsp;";
+                    elem.appendChild(createEditFields(match, index));
+                });
+            }, (onerror) => console.log('error: ' + onerror),
+            options);
     },
 
-    stopListening: function() {
+    stopListening: function () {
         window.plugins.speechRecognition.stopListening(() => console.log('Finished listening..'));
     },
 
-    showUI: function(elem) {
+    showUI: function (elem) {
         elem.style.display = "none";
         document.getElementById("tabs").style.display = "block";
         document.getElementById("h1header").style.display = "block"
     },
 
-    showChartDetails: function(imgPath) {
+    showChartDetails: function (imgPath) {
         var chartImg = document.getElementById('chartsData');
         chartImg.src = imgPath;
     },
 
-    editImageText: function(selected) {
+    editImageText: function (selected) {
         var analyzedTextElement = selected.parentNode.children[1];
-        if(analyzedTextElement.innerHTML === '') {
+        if (analyzedTextElement.innerHTML === '') {
             analyzedTextElement.innerHTML = 'Please analyze image 1st..';
             return;
         }
@@ -250,27 +236,28 @@ var app = {
         window.elemToEdit = analyzedTextElement;
     },
 
-    deleteImage: function(selected) {
+    deleteImage: function (selected) {
         var parent = document.getElementById('imageGrid');
         parent.removeChild(selected.parentNode.parentNode);
     },
 
-    updateImageText: function(updateElement) {
+    updateImageText: function (updateElement) {
         updateElement.parentNode.style.display = "none";
         var updatedText = updateElement.parentNode.getElementsByTagName('input')[0].value;
         window.elemToEdit.innerHTML = updatedText;
     },
 
-    lookupLibrary: function() {
-        
+    lookupLibrary: function () {
+
         window.imagePicker.getPictures(
-            function(results) {
+            function (results) {
                 for (var i = 0; i < results.length; i++) {
                     window.plugins.Base64.encodeFile(results[i], (imgData => {
-                        app.displayImage(imgData.replace('data:image/*;charset=utf-8;base64,',''));
+                        app.displayImage(imgData.replace('data:image/*;charset=utf-8;base64,', ''));
                     }));
                 }
-            }, function (error) {
+            },
+            function (error) {
                 console.log('Error: ' + error);
             }, {
                 maximumImagesCount: 5,
@@ -286,27 +273,33 @@ var app = {
         // }, options);
     },
 
-    publishAllImages: function() {
+    publishAllImages: function () {
         var parent = document.getElementById('imageGrid');
-        if(parent.children.length > 1) {
+        if (parent.children.length > 1) {
             alert('Images uploaded to server..');
         } else {
             alert('Please click new images or import from library to upload');
         }
     },
 
-    requestLibraryPrivilege: function() {
+    requestLibraryPrivilege: function () {
         cordova.plugins.photoLibrary.requestAuthorization(
             () => {
                 console.log('Library permission granted');
-            },
-            (err) => {
+            }, (err) => {
                 console.log('User denied the access');
             }, // if options not provided, defaults to {read: true}.
             {
-              read: true,
-              write: true
+                read: true,
+                write: true
             }
         );
+    },
+
+    bindEvents: function () {
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+        $('.nav-icon-ht').click(() => {
+            $(this).toggleClass("active");
+        });
     }
 };

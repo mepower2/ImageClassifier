@@ -10,6 +10,7 @@
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
     <title>Whirlpool Vision</title>
 </head>
 
@@ -17,12 +18,14 @@
     <img src="img/welcome.png" onclick="app.showUI(this)" style="width:100%;height:100%;padding-top:2%">
     <img id="h1header" src="img/header.png" style="display:none;height:20vw;width:100%;"></img>   <!-- blue color- #38c -->
     <div data-role="tabs" id="tabs" style="display:none;width:100%;">
-        <div data-role="navbar">
-            <ul>
-                <li><a href="#image" data-role="button" id="first" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-top ui-icon-home" onclick="app.requestLibraryPrivilege()">Home</a></li>
-                <li><a href="#speech" data-role="button" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-top ui-icon-voice" onclick="app.getPermission()">Voice</a></li>
-                <li><a href="#dashboard" data-role="button" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-top ui-icon-charts" onclick="app.showChartDetails('img/chart1.png')">Charts</a></li>
-            </ul>
+        <div data-role="footer">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#image" data-role="button" id="first" class="nav-icon-ht ui-btn ui-shadow ui-corner-all" onclick="app.requestLibraryPrivilege()"><i class="icon ion-bluetooth"></i><br/>Home</a></li>
+                    <li><a href="#speech" data-role="button" class="nav-icon-ht ui-btn ui-shadow ui-corner-all ui-btn-icon-top ui-icon-voice" onclick="app.getPermission()">Voice</a></li>
+                    <li><a href="#dashboard" data-role="button" class="nav-icon-ht ui-btn ui-shadow ui-corner-all ui-btn-icon-top ui-icon-charts" onclick="app.showChartDetails('img/chart1.png')">Charts</a></li>
+                </ul>
+            </div>
         </div>
     
         <div id="image" class="home-bg" style="text-align:center;">
@@ -50,8 +53,8 @@
                 </div>
             </div>
             
-            <button type="button" onclick="app.analyzePicture()" class="btnRegular ui-footer">Analyze</button>
-            <button type="button" onclick="app.publishAllImages()" class="btnRegular ui-footer" style="left:50%;">Publish</button>
+            <button type="button" onclick="app.analyzePicture()" class="btnRegular btnFooter">Analyze</button>
+            <button type="button" onclick="app.publishAllImages()" class="btnRegular btnFooter" style="left:50%;">Publish</button>
             
             <br />
             <label id="result" style="margin:auto;"> </label>
@@ -63,7 +66,7 @@
         </div>
 
         <div id="dashboard">
-            <img id="chartsData" src="img/chart1.png" onclick="app.showChartDetails('img/chart2.png')" style="width:100%;height:130vw;">
+            <img id="chartsData" src="img/chart1.png" onclick="app.showChartDetails('img/chart2.png')" style="width:100%;height:110vw;">
         </div>
     </div>
 
