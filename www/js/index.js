@@ -4,7 +4,7 @@ var app = {
     initialize: function () {
         this.bindEvents();
     },
-    
+
     onDeviceReady: function () {
         //app.receivedEvent('deviceready');
         $("#first").click();
@@ -83,7 +83,9 @@ var app = {
 
                     tf.classify(imageGrid.children[i].children[0].children[0].src.replace('data:image/jpeg;base64, ', '')).then(results => {
                         ++index;
-                        imageGrid.children[index].children[0].children[1].innerHTML = results[0].title + "- " + parseFloat(results[0].confidence * 100).toFixed(2) + "%";
+                        //                        imageGrid.children[index].children[0].children[1].innerHTML = results[0].title + "- " + parseFloat(results[0].confidence * 100).toFixed(2) + "%";
+                        imageGrid.children[index].children[0].children[1].innerHTML = results[0].title + " "
+
                     });
                 }
 

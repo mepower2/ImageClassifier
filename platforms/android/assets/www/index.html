@@ -16,7 +16,8 @@
 
 <body>
     <img src="img/welcome.png" onclick="app.showUI(this)" style="width:100%;height:100%;padding-top:2%">
-    <img id="h1header" src="img/header.png" style="display:none;height:20vw;width:100%;"></img>   <!-- blue color- #38c -->
+    <img id="h1header" src="img/header.png" style="display:none;height:20vw;width:100%;"></img>
+    <!-- blue color- #38c -->
     <div data-role="tabs" id="tabs" style="display:none;width:100%;">
         <div data-role="footer">
             <div data-role="navbar">
@@ -28,20 +29,24 @@
                 </ul>
             </div>
         </div>
-    
+
         <div id="image" style="text-align:center;">
             <div id="img-gather" style="display:block;">
-                <div class="home-bg">
-                    <ul id="imageGrid" data-inset="true">
-                        <li style="display:none;">
-                            <a href="#" class="camContainer">
-                                <img src="img/photo_sample.png" class="camImg">
-                                <h5></h5>
-                                <button class="ui-btn ui-btn-inline ui-icon-edit ui-btn-icon-notext no-styles" onclick="app.editImageText(this)">Edit</button>
-                                <button class="ui-btn ui-btn-inline ui-icon-delete ui-btn-icon-notext no-styles" onclick="app.deleteImage(this)">Delete</button>
-                            </a>
-                        </li>
-                    </ul>
+                <div class="home-bg" style="height:74vh">
+                    <div id='images' style="position:relative; overflow-y:auto; width:100%; height:60vh">
+                        <ul id="imageGrid" data-inset="true">
+                            <li style="display:none; ">
+                                <a href="#" class="camContainer">
+                                    <img src="img/photo_sample.png" class="camImg">
+                                    <h5></h5>
+
+                                    <button class="ui-btn ui-btn-inline ui-icon-edit ui-btn-icon-notext no-styles" onclick="app.editImageText(this)">Edit</button>
+                                    <button class="ui-btn ui-btn-inline ui-icon-delete ui-btn-icon-notext no-styles" onclick="app.deleteImage(this)">Delete</button>
+
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
 
                     <div id="editImageText">
                         <label for="updated-text" class="ui-hidden-accessible">Text input:</label>
@@ -49,16 +54,16 @@
                         <a href="#" onclick="app.updateImageText(this)">Update</a>
                     </div>
                 </div>
-                
-                <button type="button" onclick="app.takePicture()" class="btnRegular btnFooter">Take Photo</button>
-                <button type="button" onclick="app.lookupLibrary()" class="btnRegular btnFooter" style="left:50%;">Library..</button>
+
+                <button type="button" onclick="app.takePicture()" class="btnRegular btnFooter" style="bottom:12%">Take Photo</button>
+                <button type="button" onclick="app.lookupLibrary()" class="btnRegular btnFooter" style="left:50%;bottom:12%">Library..</button>
 
                 <img src="img/analyze_button.png" onclick="app.analyzePicture()" class="analyazeText">
 
                 <br />
                 <label id="result" style="margin:auto;"> </label>
             </div>
-            
+
             <!-- Carousel page for showing analysis.. -->
             <div id="img-analysis" style="display:none;">
 
@@ -71,7 +76,7 @@
         </div>
 
         <div id="dashboard">
-            <img id="chartsData" src="img/chart1.png" onclick="app.showChartDetails('img/chart2.png')" style="width:100%;height:125vw;">
+            <img id="chartsData" src="img/chart1.png" onclick="app.showChartDetails('img/chart2.png')" style="width:100%;height:95vw;">
         </div>
 
         <div id="settings">

@@ -16,123 +16,133 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 * {
-    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
-
 body {
-    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
-    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
-    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color:#E4E4E4;
-    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        color-stop(0, #A7A7A7),
-        color-stop(0.51, #E4E4E4)
-    );
-    background-attachment:fixed;
-    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-    font-size:12px;
-    height:100%;
-    margin:0px;
-    padding:0px;
-    text-transform:uppercase;
-    width:100%;
+    -webkit-touch-callout: none;
+    /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;
+    /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;
+    /* prevent copy paste, to allow, change 'none' to 'text' */
+    background-color: #E4E4E4;
+    background-image: linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image: -webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image: -ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image: -webkit-gradient( linear, left top, left bottom, color-stop(0, #A7A7A7), color-stop(0.51, #E4E4E4));
+    background-attachment: fixed;
+    font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    text-transform: uppercase;
+    width: 100%;
 }
-
-html {margin:0;padding:0;height:100%;}
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
 
 /* Portrait layout (default) */
+
 .app {
     /* background:url(../img/logo.png) no-repeat center top; 170px x 200px */
-    position:absolute;             /* position in the center of the screen */
-    left:50%;
-    top:50%;
+    position: absolute;
+    /* position in the center of the screen */
+    left: 50%;
+    top: 50%;
     /* height:50px;                   text area height */
-    width:225px;                   /* text area width */
-    text-align:center;
-    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
-    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
-                                   /* offset horizontal: half of text area width */
+    width: 225px;
+    /* text area width */
+    text-align: center;
+    padding: 180px 0px 0px 0px;
+    /* image height is 200px (bottom 20px are overlapped with text) */
+    margin: -115px 0px 0px -112px;
+    /* offset vertical: half of image height and text area height */
+    /* offset horizontal: half of text area width */
 }
 
 /* Landscape layout (with min-width) */
+
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
     .app {
-        background-position:left center;
-        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
-        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
-                                      /* offset horizontal: half of image width and text area width */
+        background-position: left center;
+        padding: 75px 0px 75px 170px;
+        /* padding-top + padding-bottom + text area = image height */
+        margin: -90px 0px 0px -198px;
+        /* offset vertical: half of image height */
+        /* offset horizontal: half of image width and text area width */
     }
 }
-
 h1 {
     /* font-size:24px;
     font-weight:normal;
     margin:0px; */
-    overflow:visible;
-    padding:0px;
-    text-align:center;
+    overflow: visible;
+    padding: 0px;
+    text-align: center;
 }
-
 .event {
-    border-radius:4px;
-    -webkit-border-radius:4px;
-    color:#FFFFFF;
-    font-size:12px;
-    margin:0px 30px;
-    padding:2px 0px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    color: #FFFFFF;
+    font-size: 12px;
+    margin: 0px 30px;
+    padding: 2px 0px;
 }
-
 .event.listening {
-    background-color:#333333;
-    display:block;
+    background-color: #333333;
+    display: block;
 }
-
 .event.received {
-    background-color:#4B946A;
-    display:none;
+    background-color: #4B946A;
+    display: none;
 }
-
 @keyframes fade {
-    from { opacity: 1.0; }
-    50% { opacity: 0.4; }
-    to { opacity: 1.0; }
+    from {
+        opacity: 1.0;
+    }
+    50% {
+        opacity: 0.4;
+    }
+    to {
+        opacity: 1.0;
+    }
 }
- 
 @-webkit-keyframes fade {
-    from { opacity: 1.0; }
-    50% { opacity: 0.4; }
-    to { opacity: 1.0; }
+    from {
+        opacity: 1.0;
+    }
+    50% {
+        opacity: 0.4;
+    }
+    to {
+        opacity: 1.0;
+    }
 }
- 
 .blink {
-    animation:fade 3000ms infinite;
-    -webkit-animation:fade 3000ms infinite;
+    animation: fade 3000ms infinite;
+    -webkit-animation: fade 3000ms infinite;
 }
-
 #imageGrid li {
     display: inline;
     list-style-type: none;
     padding-right: 10px;
     float: left;
 }
-
 .camContainer {
     position: relative;
     text-align: center;
 }
-
 .camContainer .camImg {
     width: 40vw;
     height: 45vw;
 }
-
 .camContainer h5 {
     position: absolute;
     z-index: 1;
@@ -141,11 +151,10 @@ h1 {
     color: black;
     background: white;
 }
-
 .camContainer button.ui-icon-edit {
     position: absolute;
     z-index: 1;
-    bottom: 130px;
+    bottom: 10px;
     right: 20%;
     color: black;
     background: white;
@@ -153,11 +162,10 @@ h1 {
     font-size: 12px;
     width: 14%;
 }
-
 .camContainer button.ui-icon-delete {
     position: absolute;
     z-index: 1;
-    bottom: 130px;
+    bottom: 10px;
     right: 0%;
     color: black;
     background: white;
@@ -165,22 +173,20 @@ h1 {
     font-size: 12px;
     width: 14%;
 }
-
 .ui-footer {
     position: fixed;
     left: 0;
     right: 0;
     bottom: 0;
     opacity: 0.8;
+    z-index: 25
 }
-
 .btnFooter {
     position: absolute;
     left: 1%;
     right: 0;
     bottom: -3%;
 }
-
 .btnRegular {
     background-color: #F9AF00 !important;
     color: white !important;
@@ -188,33 +194,27 @@ h1 {
     border-radius: 75px !important;
     z-index: 2;
 }
-
 .ui-mobile .ui-page {
     min-height: 100% !important;
 }
-
 .ui-icon-home:after {
     background-image: url("../img/home-icon.png");
     background-size: 20px 20px;
 }
-
 .ui-icon-voice:after {
     background-image: url("../img/mic-icon.png");
     background-size: 20px 20px;
 }
-
 .ui-icon-charts:after {
     background-image: url("../img/charts-icon.png");
     background-size: 20px 20px;
 }
-
 .listener {
     background-image: url('../img/speech-bg.png');
     background-size: 100% 100%;
     height: 125vw;
     margin-top: -3%;
 }
-
 .home-bg {
     background-image: url('../img/bground.png');
     background-size: 100% 100%;
@@ -223,20 +223,36 @@ h1 {
     position: relative;
     overflow-y: scroll;
 }
-
-.ui-page-theme-a .ui-btn.ui-btn-active, html .ui-bar-a .ui-btn.ui-btn-active, html .ui-body-a .ui-btn.ui-btn-active, html body .ui-group-theme-a .ui-btn.ui-btn-active, html head+body .ui-btn.ui-btn-a.ui-btn-active, .ui-page-theme-a .ui-checkbox-on:after, html .ui-bar-a .ui-checkbox-on:after, html .ui-body-a .ui-checkbox-on:after, html body .ui-group-theme-a .ui-checkbox-on:after, .ui-btn.ui-checkbox-on.ui-btn-a:after, .ui-page-theme-a .ui-flipswitch-active, html .ui-bar-a .ui-flipswitch-active, html .ui-body-a .ui-flipswitch-active, html body .ui-group-theme-a .ui-flipswitch-active, html body .ui-flipswitch.ui-bar-a.ui-flipswitch-active, .ui-page-theme-a .ui-slider-track .ui-btn-active, html .ui-bar-a .ui-slider-track .ui-btn-active, html .ui-body-a .ui-slider-track .ui-btn-active, html body .ui-group-theme-a .ui-slider-track .ui-btn-active, html body div.ui-slider-track.ui-body-a .ui-btn-active {
+.ui-page-theme-a .ui-btn.ui-btn-active,
+html .ui-bar-a .ui-btn.ui-btn-active,
+html .ui-body-a .ui-btn.ui-btn-active,
+html body .ui-group-theme-a .ui-btn.ui-btn-active,
+html head+body .ui-btn.ui-btn-a.ui-btn-active,
+.ui-page-theme-a .ui-checkbox-on:after,
+html .ui-bar-a .ui-checkbox-on:after,
+html .ui-body-a .ui-checkbox-on:after,
+html body .ui-group-theme-a .ui-checkbox-on:after,
+.ui-btn.ui-checkbox-on.ui-btn-a:after,
+.ui-page-theme-a .ui-flipswitch-active,
+html .ui-bar-a .ui-flipswitch-active,
+html .ui-body-a .ui-flipswitch-active,
+html body .ui-group-theme-a .ui-flipswitch-active,
+html body .ui-flipswitch.ui-bar-a.ui-flipswitch-active,
+.ui-page-theme-a .ui-slider-track .ui-btn-active,
+html .ui-bar-a .ui-slider-track .ui-btn-active,
+html .ui-body-a .ui-slider-track .ui-btn-active,
+html body .ui-group-theme-a .ui-slider-track .ui-btn-active,
+html body div.ui-slider-track.ui-body-a .ui-btn-active {
     color: #333 !important;
     border-top: 10px solid #F9AF00 !important;
     background-color: whitesmoke !important;
     text-shadow: none !important;
 }
-
 button.no-styles {
     background: none;
     border: none;
     cursor: pointer;
 }
-
 #editImageText {
     display: none;
     position: absolute;
@@ -247,33 +263,27 @@ button.no-styles {
     background-color: aliceblue;
     border-radius: 10px;
 }
-
 #speechResults {
     font-size: medium;
     margin-left: 5%;
-    color:white;
+    color: white;
 }
-
-button.ui-btn, .ui-controlgroup-controls button.ui-btn-icon-notext {
+button.ui-btn,
+.ui-controlgroup-controls button.ui-btn-icon-notext {
     width: 48%;
 }
-
 .ui-controlgroup-horizontal .ui-controlgroup-controls {
     width: 100% !important;
 }
-
 .ui-controlgroup-horizontal .ui-controlgroup-controls .ui-btn {
     width: 40% !important;
 }
-
 .nav-icon-ht {
     border-top: 10px solid whitesmoke !important;
 }
-
 .tab-size {
     font-size: 8vw !important;
 }
-
 .analyazeText {
     position: fixed;
     left: 3%;
