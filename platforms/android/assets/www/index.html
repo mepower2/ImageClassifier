@@ -30,40 +30,39 @@
         </div>
     
         <div id="image" style="text-align:center;">
-            <!-- <fieldset data-role="controlgroup" data-type="horizontal">
-                <button type="button" onclick="app.takePicture()" class="btnRegular">Click New..</button>
-                <button type="button" onclick="app.lookupLibrary()" class="btnRegular">Photo Library..</button>
-            </fieldset> -->
-            
-            <div class="home-bg">
-                <ul id="imageGrid" data-inset="true">
-                    <li style="display:none;">
-                        <a href="#" class="camContainer">
-                            <img src="img/photo_sample.png" class="camImg">
-                            <h5></h5>
-                            <button class="ui-btn ui-btn-inline ui-icon-edit ui-btn-icon-notext no-styles" onclick="app.editImageText(this)">Edit</button>
-                            <button class="ui-btn ui-btn-inline ui-icon-delete ui-btn-icon-notext no-styles" onclick="app.deleteImage(this)">Delete</button>
-                        </a>
-                    </li>
-                </ul>
+            <div id="img-gather" style="display:block;">
+                <div class="home-bg">
+                    <ul id="imageGrid" data-inset="true">
+                        <li style="display:none;">
+                            <a href="#" class="camContainer">
+                                <img src="img/photo_sample.png" class="camImg">
+                                <h5></h5>
+                                <button class="ui-btn ui-btn-inline ui-icon-edit ui-btn-icon-notext no-styles" onclick="app.editImageText(this)">Edit</button>
+                                <button class="ui-btn ui-btn-inline ui-icon-delete ui-btn-icon-notext no-styles" onclick="app.deleteImage(this)">Delete</button>
+                            </a>
+                        </li>
+                    </ul>
 
-                <div id="editImageText">
-                    <label for="updated-text" class="ui-hidden-accessible">Text input:</label>
-                    <input type="text" name="updated-text" data-clear-btn="true">
-                    <a href="#" onclick="app.updateImageText(this)">Update</a>
+                    <div id="editImageText">
+                        <label for="updated-text" class="ui-hidden-accessible">Text input:</label>
+                        <input type="text" name="updated-text" data-clear-btn="true">
+                        <a href="#" onclick="app.updateImageText(this)">Update</a>
+                    </div>
                 </div>
+                
+                <button type="button" onclick="app.takePicture()" class="btnRegular btnFooter">Take Photo</button>
+                <button type="button" onclick="app.lookupLibrary()" class="btnRegular btnFooter" style="left:50%;">Library..</button>
+
+                <img src="img/analyze_button.png" onclick="app.analyzePicture()" class="analyazeText">
+
+                <br />
+                <label id="result" style="margin:auto;"> </label>
             </div>
             
-            <button type="button" onclick="app.takePicture()" class="btnRegular btnFooter">Take Photo</button>
-            <button type="button" onclick="app.lookupLibrary()" class="btnRegular btnFooter" style="left:50%;">Library..</button>
+            <!-- Carousel page for showing analysis.. -->
+            <div id="img-analysis" style="display:none;">
 
-            <img src="img/analyze_button.png" onclick="app.analyzePicture()" class="analyazeText">
-
-            <!-- <button type="button" onclick="app.analyzePicture()" class="btnRegular btnFooter">Analyze</button>
-            <button type="button" onclick="app.publishAllImages()" class="btnRegular btnFooter" style="left:50%;">Publish</button> -->
-            
-            <br />
-            <label id="result" style="margin:auto;"> </label>
+            </div>
         </div>
 
         <div id="speech" class="listener" onclick="app.startListening()">

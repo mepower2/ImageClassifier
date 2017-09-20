@@ -22,9 +22,7 @@ var app = {
             encodingType: Camera.EncodingType.JPEG,
             mediaType: Camera.MediaType.PICTURE,
             allowEdit: false,
-            correctOrientation: true, //Corrects Android orientation quirks,
-            targetHeight: 100,
-            targetWidth: 100
+            correctOrientation: true
         }
     },
 
@@ -72,7 +70,7 @@ var app = {
         });
 
         if (imageGrid.children.length <= 1) {
-            elem.innerHTML = "Please click photo for analysis..";
+            window.alert("Please click photo for analysis..");
             return;
         } else {
             elem.innerHTML = "";
@@ -85,9 +83,13 @@ var app = {
 
                     tf.classify(imageGrid.children[i].children[0].children[0].src.replace('data:image/jpeg;base64, ', '')).then(results => {
                         ++index;
-                        imageGrid.children[index].children[0].children[1].innerHTML = results[0].title + "- " + parseFloat(results[0].confidence * 100).toFixed(2);
+                        imageGrid.children[index].children[0].children[1].innerHTML = results[0].title + "- " + parseFloat(results[0].confidence * 100).toFixed(2) + "%";
                     });
                 }
+
+                // document.getElementById('img-gather').style.display = 'none';
+                // document.getElementById('img-analysis').style.display = 'block';
+                // document.getElementById('img-analysis').innerHTML = document.getElementById('imageGrid').children.length;
             });
         }
     },
@@ -182,7 +184,7 @@ var app = {
 
             var buttonPub = document.createElement('button');
             buttonPub.id = 'buttonPub' + index;
-            buttonPub.innerHTML = '<u>Publish</u>';
+            buttonPub.innerHTML = '<u>Upload</u>';
             buttonPub.style.background = 'none';
             buttonPub.style.border = 'none';
             buttonPub.style.cursor = 'pointer';
@@ -269,13 +271,6 @@ var app = {
                 width: 800
             }
         );
-
-        // var options = app.getCameraOptions(Camera.PictureSourceType.PHOTOLIBRARY);
-        // navigator.camera.getPicture(function cameraSuccess(imageUri) {
-        //     app.displayImage(imageUri);
-        // }, function cameraError(error) {
-        //     console.debug("Unable to obtain picture: " + error, "app");
-        // }, options);
     },
 
     publishAllImages: function () {
