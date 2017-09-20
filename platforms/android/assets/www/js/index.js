@@ -139,7 +139,7 @@ var app = {
         }
 
         var speechContainer = document.getElementById('speech');
-        speechContainer.style.backgroundImage = "url('img/listen-bg.png')";
+        speechContainer.style.backgroundImage = "url('img/bground.png')";
         speechContainer.onclick = function () {
             console.log('Do nothing..');
         }
@@ -150,6 +150,9 @@ var app = {
             textField.id = 'text' + index;
             textField.value = match;
             textField.style.visibility = "hidden";
+            textField.style.width = "90%";
+            textField.style.height = "10vw";
+            textField.style.fontSize = "large";
 
             var buttonUpdate = document.createElement('button');
             buttonUpdate.id = 'button2' + index;
@@ -191,9 +194,11 @@ var app = {
 
             div.appendChild(button);
             div.appendChild(buttonPub);
-            div.appendChild(textField);
-            div.appendChild(buttonUpdate);
             div.appendChild(document.createElement('br'));
+            div.appendChild(document.createElement('br'));
+            div.appendChild(textField);
+            div.appendChild(document.createElement('br'));
+            div.appendChild(buttonUpdate);
             return div;
         }
 
@@ -201,7 +206,7 @@ var app = {
                 var index = -1;
                 matches.forEach(match => {
                     index++;
-                    elem.innerHTML += "<p id=\"p-" + index + "\">" + match + "</p>&nbsp;&nbsp;";
+                    elem.innerHTML += "<p style=\"margin-top:2%;margin-bottom:2%;\" id=\"p-" + index + "\">" + match + "</p>";
                     elem.appendChild(createEditFields(match, index));
                 });
             }, (onerror) => console.log('error: ' + onerror),
@@ -298,8 +303,5 @@ var app = {
 
     bindEvents: function () {
         document.addEventListener('deviceready', this.onDeviceReady, false);
-        $('.nav-icon-ht').click(() => {
-            $(this).toggleClass("active");
-        });
     }
 };

@@ -21,20 +21,21 @@
         <div data-role="footer">
             <div data-role="navbar">
                 <ul>
-                    <li><a href="#image" data-role="button" id="first" class="nav-icon-ht ui-btn ui-shadow ui-corner-all" onclick="app.requestLibraryPrivilege()"><i class="icon ion-bluetooth"></i><br/>Home</a></li>
-                    <li><a href="#speech" data-role="button" class="nav-icon-ht ui-btn ui-shadow ui-corner-all ui-btn-icon-top ui-icon-voice" onclick="app.getPermission()">Voice</a></li>
-                    <li><a href="#dashboard" data-role="button" class="nav-icon-ht ui-btn ui-shadow ui-corner-all ui-btn-icon-top ui-icon-charts" onclick="app.showChartDetails('img/chart1.png')">Charts</a></li>
+                    <li><a href="#image" data-role="button" id="first" class="nav-icon-ht ui-btn ui-shadow ui-corner-all" onclick="app.requestLibraryPrivilege()"><i class="icon ion-ios-home-outline tab-size"></i><br/>Home</a></li>
+                    <li><a href="#speech" data-role="button" class="nav-icon-ht ui-btn ui-shadow ui-corner-all" onclick="app.getPermission()"><i class="icon ion-ios-mic-outline tab-size"></i><br/>Voice</a></li>
+                    <li><a href="#dashboard" data-role="button" class="nav-icon-ht ui-btn ui-shadow ui-corner-all" onclick="app.showChartDetails('img/chart1.png')"><i class="icon ion-ios-pie-outline tab-size"></i><br/>Charts</a></li>
+                    <li><a href="#settings" data-role="button" class="nav-icon-ht ui-btn ui-shadow ui-corner-all" onclick=""><i class="icon ion-ios-gear-outline tab-size"></i><br/>Settings</a></li>
                 </ul>
             </div>
         </div>
     
-        <div id="image" class="home-bg" style="text-align:center;">
-            <fieldset data-role="controlgroup" data-type="horizontal">
+        <div id="image" style="text-align:center;">
+            <!-- <fieldset data-role="controlgroup" data-type="horizontal">
                 <button type="button" onclick="app.takePicture()" class="btnRegular">Click New..</button>
                 <button type="button" onclick="app.lookupLibrary()" class="btnRegular">Photo Library..</button>
-            </fieldset>
+            </fieldset> -->
             
-            <div style="position:relative">
+            <div class="home-bg">
                 <ul id="imageGrid" data-inset="true">
                     <li style="display:none;">
                         <a href="#" class="camContainer">
@@ -53,8 +54,13 @@
                 </div>
             </div>
             
-            <button type="button" onclick="app.analyzePicture()" class="btnRegular btnFooter">Analyze</button>
-            <button type="button" onclick="app.publishAllImages()" class="btnRegular btnFooter" style="left:50%;">Publish</button>
+            <button type="button" onclick="app.takePicture()" class="btnRegular btnFooter">Take Photo</button>
+            <button type="button" onclick="app.lookupLibrary()" class="btnRegular btnFooter" style="left:50%;">Library..</button>
+
+            <img src="img/analyze_button.png" onclick="app.analyzePicture()" class="analyazeText">
+
+            <!-- <button type="button" onclick="app.analyzePicture()" class="btnRegular btnFooter">Analyze</button>
+            <button type="button" onclick="app.publishAllImages()" class="btnRegular btnFooter" style="left:50%;">Publish</button> -->
             
             <br />
             <label id="result" style="margin:auto;"> </label>
@@ -62,11 +68,15 @@
 
         <div id="speech" class="listener" onclick="app.startListening()">
             <button id="btnStopListening" onclick="app.stopListening()" style="visibility:hidden" class="btnRegular"> Stop Listening </button>
-            <div id="speechResults" style="font-size:large;margin-left:10%;color:white;"> </div>
+            <div id="speechResults"> </div>
         </div>
 
         <div id="dashboard">
-            <img id="chartsData" src="img/chart1.png" onclick="app.showChartDetails('img/chart2.png')" style="width:100%;height:110vw;">
+            <img id="chartsData" src="img/chart1.png" onclick="app.showChartDetails('img/chart2.png')" style="width:100%;height:125vw;">
+        </div>
+
+        <div id="settings">
+            <h1>Settings here..</h1>
         </div>
     </div>
 

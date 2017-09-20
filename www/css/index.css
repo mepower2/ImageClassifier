@@ -175,18 +175,18 @@ h1 {
 }
 
 .btnFooter {
-    position: fixed;
-    left: 0;
+    position: absolute;
+    left: 1%;
     right: 0;
-    bottom: 19%;
-    opacity: 0.8;
+    bottom: -3%;
 }
 
 .btnRegular {
-    opacity: 0.8;
-    background: #F9AF00 !important;
+    background-color: #F9AF00 !important;
     color: white !important;
     border-color: black !important;
+    border-radius: 75px !important;
+    z-index: 2;
 }
 
 .ui-mobile .ui-page {
@@ -211,18 +211,24 @@ h1 {
 .listener {
     background-image: url('../img/speech-bg.png');
     background-size: 100% 100%;
-    height: 110vw;
-    opacity: 0.7;
+    height: 125vw;
+    margin-top: -3%;
 }
 
 .home-bg {
     background-image: url('../img/bground.png');
     background-size: 100% 100%;
     height: 110vw;
+    margin-top: -3%;
+    position: relative;
+    overflow-y: scroll;
 }
 
 .ui-page-theme-a .ui-btn.ui-btn-active, html .ui-bar-a .ui-btn.ui-btn-active, html .ui-body-a .ui-btn.ui-btn-active, html body .ui-group-theme-a .ui-btn.ui-btn-active, html head+body .ui-btn.ui-btn-a.ui-btn-active, .ui-page-theme-a .ui-checkbox-on:after, html .ui-bar-a .ui-checkbox-on:after, html .ui-body-a .ui-checkbox-on:after, html body .ui-group-theme-a .ui-checkbox-on:after, .ui-btn.ui-checkbox-on.ui-btn-a:after, .ui-page-theme-a .ui-flipswitch-active, html .ui-bar-a .ui-flipswitch-active, html .ui-body-a .ui-flipswitch-active, html body .ui-group-theme-a .ui-flipswitch-active, html body .ui-flipswitch.ui-bar-a.ui-flipswitch-active, .ui-page-theme-a .ui-slider-track .ui-btn-active, html .ui-bar-a .ui-slider-track .ui-btn-active, html .ui-body-a .ui-slider-track .ui-btn-active, html body .ui-group-theme-a .ui-slider-track .ui-btn-active, html body div.ui-slider-track.ui-body-a .ui-btn-active {
+    color: #333 !important;
+    border-top: 10px solid #F9AF00 !important;
     background-color: whitesmoke !important;
+    text-shadow: none !important;
 }
 
 button.no-styles {
@@ -242,8 +248,14 @@ button.no-styles {
     border-radius: 10px;
 }
 
+#speechResults {
+    font-size: medium;
+    margin-left: 5%;
+    color:white;
+}
+
 button.ui-btn, .ui-controlgroup-controls button.ui-btn-icon-notext {
-    width: 50%;
+    width: 48%;
 }
 
 .ui-controlgroup-horizontal .ui-controlgroup-controls {
@@ -255,12 +267,18 @@ button.ui-btn, .ui-controlgroup-controls button.ui-btn-icon-notext {
 }
 
 .nav-icon-ht {
-    height: 9vw;
-    border-top: 10px solid white !important;
+    border-top: 10px solid whitesmoke !important;
 }
 
-.nav-icon-ht.active {
-    height: 9vw;
-    color: #F9AF00;
-    border-top: 10px solid #F9AF00;
+.tab-size {
+    font-size: 8vw !important;
+}
+
+.analyazeText {
+    position: fixed;
+    left: 3%;
+    right: 0;
+    bottom: 15%;
+    opacity: 0.8;
+    width: 90%;
 }
