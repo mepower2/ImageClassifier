@@ -83,15 +83,16 @@ var app = {
 
                     tf.classify(imageGrid.children[i].children[0].children[0].src.replace('data:image/jpeg;base64, ', '')).then(results => {
                         ++index;
-                        //                        imageGrid.children[index].children[0].children[1].innerHTML = results[0].title + "- " + parseFloat(results[0].confidence * 100).toFixed(2) + "%";
-                        imageGrid.children[index].children[0].children[1].innerHTML = results[0].title + " "
-
+                        // imageGrid.children[index].children[0].children[1].innerHTML = results[0].title + "- " + parseFloat(results[0].confidence * 100).toFixed(2) + "%";
+                        imageGrid.children[index].children[0].children[1].innerHTML = results[0].title;
+                        if(index == (imageGrid.children.length-1)) {
+                            app.createCarouselView();
+                        }
                     });
                 }
 
-                // document.getElementById('img-gather').style.display = 'none';
-                // document.getElementById('img-analysis').style.display = 'block';
-                // document.getElementById('img-analysis').innerHTML = document.getElementById('imageGrid').children.length;
+                document.getElementById('img-gather').style.display = 'none';
+                document.getElementById('img-analysis').style.display = 'block';
             });
         }
     },
@@ -300,5 +301,80 @@ var app = {
 
     bindEvents: function () {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+
+    createCarouselView: function() {
+        var imageGrid = document.getElementById('imageGrid');
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+        
+        var	gallery, el, i, page, dots = document.querySelectorAll('#nav li');
+
+        var slides = [];
+        for (var i = 1; i < imageGrid.children.length; i++) {
+            var elem = {};
+            elem.img = imageGrid.children[i].children[0].children[0].src;
+            elem.desc = imageGrid.children[i].children[0].children[1].innerHTML;
+            elem.width = 230;
+            elem.height = 280;
+            slides.push(elem);
+        }
+        // Set the nav accordingly
+        if(imageGrid.children.length < 7) {
+            var navSelector = document.getElementById('nav');
+            for(var tmp=6; tmp>=imageGrid.children.length; tmp--) {
+                navSelector.removeChild(nav.children[tmp]);
+            }
+        }
+                
+        gallery = new SwipeView('#wrapper', { numberOfPages: slides.length });
+        
+        // Load initial data
+        for (i=0; i<3; i++) {
+            page = i==0 ? slides.length-1 : i-1;
+            el = document.createElement('img');
+            el.className = 'loading';
+            el.src = slides[page].img;
+            el.width = slides[page].width;
+            el.height = slides[page].height;
+            el.onload = function () { this.className = ''; }
+            gallery.masterPages[i].appendChild(el);
+        
+            el = document.createElement('span');
+            el.innerHTML = slides[page].desc;
+            gallery.masterPages[i].appendChild(el)
+        }
+        
+        gallery.onFlip(function () {
+            var el,
+                upcoming,
+                i;
+        
+            for (i=0; i<3; i++) {
+                upcoming = gallery.masterPages[i].dataset.upcomingPageIndex;
+        
+                if (upcoming != gallery.masterPages[i].dataset.pageIndex) {
+                    el = gallery.masterPages[i].querySelector('img');
+                    el.className = 'loading';
+                    el.src = slides[upcoming].img;
+                    el.width = slides[upcoming].width;
+                    el.height = slides[upcoming].height;
+                    
+                    el = gallery.masterPages[i].querySelector('span');
+                    el.innerHTML = slides[upcoming].desc;
+                }
+            }
+            
+            document.querySelector('#nav .selected').className = '';
+            dots[gallery.pageIndex+1].className = 'selected';
+        });
+        
+        gallery.onMoveOut(function () {
+            gallery.masterPages[gallery.currentMasterPage].className = gallery.masterPages[gallery.currentMasterPage].className.replace(/(^|\s)swipeview-active(\s|$)/, '');
+        });
+        
+        gallery.onMoveIn(function () {
+            var className = gallery.masterPages[gallery.currentMasterPage].className;
+            /(^|\s)swipeview-active(\s|$)/.test(className) || (gallery.masterPages[gallery.currentMasterPage].className = !className ? 'swipeview-active' : className + ' swipeview-active');
+        });
     }
 };
