@@ -4,6 +4,8 @@
 	min-width: 320px;
 	height: 120vw;
 	position: absolute !important;
+	left: 4%;
+	bottom: 8%;
 }
 
 #nav {
@@ -12,8 +14,7 @@
 	top:8px;
 	/* width:200px; */
 	height:20px;
-	left:50%;
-	background:rgba(0,0,0,0.75);
+	left:60%;
 	padding:0;
 	margin:0 0 0 -100px;
 	-webkit-border-radius:10px;
@@ -110,7 +111,7 @@
 #swipeview-slider span {
 	color: white !important;
 	left: 5% !important;
-	position:absolute;
+	/* position:absolute; */
 	bottom:0;
 	width:85%;
 	padding:20px 0;

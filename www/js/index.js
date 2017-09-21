@@ -314,8 +314,9 @@ var app = {
             var elem = {};
             elem.img = imageGrid.children[i].children[0].children[0].src;
             elem.desc = imageGrid.children[i].children[0].children[1].innerHTML;
-            elem.width = 230;
-            elem.height = 280;
+            elem.width = 160;
+            elem.height = 210;
+            elem.listIndex = i;
             slides.push(elem);
         }
         // Set the nav accordingly
@@ -338,10 +339,42 @@ var app = {
             el.height = slides[page].height;
             el.onload = function () { this.className = ''; }
             gallery.masterPages[i].appendChild(el);
-        
+
             el = document.createElement('span');
             el.innerHTML = slides[page].desc;
-            gallery.masterPages[i].appendChild(el)
+            gallery.masterPages[i].appendChild(el);
+
+            el = document.createElement('p');
+            el.style.display = 'none';
+            el.innerHTML = slides[page].listIndex;
+            gallery.masterPages[i].appendChild(el);
+
+            gallery.masterPages[i].appendChild(document.createElement('br'));
+            
+            el = document.createElement('button');
+            el.innerHTML = 'Edit';
+            el.style.height = '35px';
+            el.style.width = '120px';
+            el.style.color = 'white';
+            el.style.borderRadius = '65px';
+            el.style.backgroundColor = '#919499';
+            el.style.border = 'none';
+            gallery.masterPages[i].appendChild(el);
+
+            gallery.masterPages[i].appendChild( document.createTextNode( '\u00A0\u00A0' ) );
+
+            el = document.createElement('button');
+            el.innerHTML = 'Delete';
+            el.style.height = '35px';
+            el.style.width = '120px';
+            el.style.color = 'white';
+            el.style.borderRadius = '65px';
+            el.style.backgroundColor = '#D33C55';
+            el.style.border = 'none';
+            el.onclick = function() {
+                console.log(this.parentElement.children[2].innerHTML);
+            }
+            gallery.masterPages[i].appendChild(el);
         }
         
         gallery.onFlip(function () {
@@ -361,6 +394,9 @@ var app = {
                     
                     el = gallery.masterPages[i].querySelector('span');
                     el.innerHTML = slides[upcoming].desc;
+
+                    el = gallery.masterPages[i].querySelector('p');
+                    el.innerHTML = slides[upcoming].listIndex;
                 }
             }
             
