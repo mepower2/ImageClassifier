@@ -226,5 +226,13 @@
         "variables": {
             "PHOTO_LIBRARY_USAGE_DESCRIPTION": "To choose photos"
         }
+    },
+    "cordova-plugin-spinnerdialog": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-spinnerdialog@^1.3.2"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

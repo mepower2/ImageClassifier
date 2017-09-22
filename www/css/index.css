@@ -314,3 +314,13 @@ button.ui-btn,
     left: 27%;
     border: none;
 }
+#editImageTextDiv {
+    display: none;
+    position: absolute;
+    left: 5%;
+    top: 55%;
+    background-color: #549D00;
+    border: 5px solid #549D00;
+    width: 85%;
+
+}

@@ -672,6 +672,14 @@ module.exports = [
         "id": "cordova-plugin-photo-library.PhotoLibraryProxy",
         "pluginId": "cordova-plugin-photo-library",
         "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-spinnerdialog/www/spinner.js",
+        "id": "cordova-plugin-spinnerdialog.SpinnerDialog",
+        "pluginId": "cordova-plugin-spinnerdialog",
+        "merges": [
+            "window.plugins.spinnerDialog"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -704,7 +712,8 @@ module.exports.metadata =
     "cordova.plugins.diagnostic": "3.6.7",
     "cordova-plugin-image-picker": "1.1.1",
     "com-badrit-base64": "0.2.0",
-    "cordova-plugin-photo-library": "2.1.0"
+    "cordova-plugin-photo-library": "2.1.0",
+    "cordova-plugin-spinnerdialog": "1.3.2"
 }
 // BOTTOM OF METADATA
 });

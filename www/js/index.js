@@ -74,7 +74,8 @@ var app = {
             return;
         } else {
             elem.innerHTML = "";
-
+            window.plugins.spinnerDialog.show();
+            
             tf.load().then(() => {
                 console.log('Model Loaded');
 
@@ -303,9 +304,34 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
 
+    resetCarouselView: function() {
+        var parentNode = document.getElementById('wrapper');
+        while(parentNode.firstChild) {
+            parentNode.removeChild(parentNode.firstChild);
+        }
+        
+        var parentNode2 = document.getElementById('nav');
+        if(parentNode2.children.length < document.getElementById('nav-backup').children.length) {
+            var backUp = document.getElementById('nav-backup').cloneNode(true);
+
+            var container = parentNode2.parentNode;
+            container.removeChild(parentNode2);
+            backUp.id = 'nav';
+            backUp.style.display = 'block';
+            container.appendChild(backUp);
+        }
+    },
+
     createCarouselView: function() {
+        app.resetCarouselView()  // Reset carousel 1st
         var imageGrid = document.getElementById('imageGrid');
-        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+        // Set the nav accordingly
+        if(imageGrid.children.length < 7) {
+            var navSelector = document.getElementById('nav');
+            for(var tmp=6; tmp>=imageGrid.children.length; tmp--) {
+                navSelector.removeChild(navSelector.children[tmp]);
+            }
+        }
         
         var	gallery, el, i, page, dots = document.querySelectorAll('#nav li');
 
@@ -319,14 +345,7 @@ var app = {
             elem.listIndex = i;
             slides.push(elem);
         }
-        // Set the nav accordingly
-        if(imageGrid.children.length < 7) {
-            var navSelector = document.getElementById('nav');
-            for(var tmp=6; tmp>=imageGrid.children.length; tmp--) {
-                navSelector.removeChild(nav.children[tmp]);
-            }
-        }
-                
+        
         gallery = new SwipeView('#wrapper', { numberOfPages: slides.length });
         
         // Load initial data
@@ -359,9 +378,15 @@ var app = {
             el.style.borderRadius = '65px';
             el.style.backgroundColor = '#919499';
             el.style.border = 'none';
+            el.onclick = function() {
+                var editDiv = document.getElementById('editImageTextDiv');
+                editDiv.style.display = 'block';
+                var textToUpdate = this.parentElement.children[1].innerText;
+                editDiv.children[0].children[0].value = textToUpdate;
+            }
             gallery.masterPages[i].appendChild(el);
 
-            gallery.masterPages[i].appendChild( document.createTextNode( '\u00A0\u00A0' ) );
+            gallery.masterPages[i].appendChild( document.createTextNode( '\u00A0\u00A0\u00A0' ) );
 
             el = document.createElement('button');
             el.innerHTML = 'Delete';
@@ -372,15 +397,18 @@ var app = {
             el.style.backgroundColor = '#D33C55';
             el.style.border = 'none';
             el.onclick = function() {
-                console.log(this.parentElement.children[2].innerHTML);
+                var selectedElemIndex = parseInt(this.parentElement.children[2].innerHTML);
+                imageGrid.removeChild(imageGrid.children[selectedElemIndex]);
+                app.createCarouselView();
             }
             gallery.masterPages[i].appendChild(el);
         }
+        window.plugins.spinnerDialog.hide();
         
         gallery.onFlip(function () {
             var el,
                 upcoming,
-                i;
+                i, dots = document.querySelectorAll('#nav li');
         
             for (i=0; i<3; i++) {
                 upcoming = gallery.masterPages[i].dataset.upcomingPageIndex;
@@ -400,17 +428,17 @@ var app = {
                 }
             }
             
-            document.querySelector('#nav .selected').className = '';
+            if(document.querySelector('#nav .selected')) {
+                document.querySelector('#nav .selected').className = '';
+            }
             dots[gallery.pageIndex+1].className = 'selected';
         });
-        
-        gallery.onMoveOut(function () {
-            gallery.masterPages[gallery.currentMasterPage].className = gallery.masterPages[gallery.currentMasterPage].className.replace(/(^|\s)swipeview-active(\s|$)/, '');
-        });
-        
-        gallery.onMoveIn(function () {
-            var className = gallery.masterPages[gallery.currentMasterPage].className;
-            /(^|\s)swipeview-active(\s|$)/.test(className) || (gallery.masterPages[gallery.currentMasterPage].className = !className ? 'swipeview-active' : className + ' swipeview-active');
-        });
+    },
+
+    updateImageData: function() {
+        var editDiv = document.getElementById('editImageTextDiv');
+        var updatedText = editDiv.children[0].children[0].value;
+        editDiv.style.display = 'none';
+        document.querySelector('#swipeview-slider .swipeview-active span').innerText = updatedText;
     }
 };

@@ -107,6 +107,10 @@
                         {
                             "xml": "<allow-navigation href=\"cdvphotolibrary:*\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SpinnerDialog\"><param name=\"android-package\" value=\"hu.dpal.phonegap.plugins.SpinnerDialog\" /></feature>",
+                            "count": 1
                         }
                     ],
                     "/widget": [
@@ -304,6 +308,9 @@
             "PACKAGE_NAME": "mw.whirlpool.poc"
         },
         "cordova-plugin-photo-library": {
+            "PACKAGE_NAME": "mw.whirlpool.poc"
+        },
+        "cordova-plugin-spinnerdialog": {
             "PACKAGE_NAME": "mw.whirlpool.poc"
         }
     },
@@ -904,6 +911,14 @@
             "id": "cordova-plugin-photo-library.async_map",
             "file": "plugins/cordova-plugin-photo-library/www/async/dist/async.min.map",
             "pluginId": "cordova-plugin-photo-library"
+        },
+        {
+            "id": "cordova-plugin-spinnerdialog.SpinnerDialog",
+            "file": "plugins/cordova-plugin-spinnerdialog/www/spinner.js",
+            "pluginId": "cordova-plugin-spinnerdialog",
+            "merges": [
+                "window.plugins.spinnerDialog"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -934,6 +949,7 @@
         "cordova.plugins.diagnostic": "3.6.7",
         "cordova-plugin-image-picker": "1.1.1",
         "com-badrit-base64": "0.2.0",
-        "cordova-plugin-photo-library": "2.1.0"
+        "cordova-plugin-photo-library": "2.1.0",
+        "cordova-plugin-spinnerdialog": "1.3.2"
     }
 }

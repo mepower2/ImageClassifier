@@ -81,6 +81,9 @@
         },
         "cordova-plugin-photo-library": {
             "PACKAGE_NAME": "mw.whirlpool.poc"
+        },
+        "cordova-plugin-spinnerdialog": {
+            "PACKAGE_NAME": "mw.whirlpool.poc"
         }
     },
     "dependent_plugins": {
