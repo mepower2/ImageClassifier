@@ -300,10 +300,6 @@ var app = {
         );
     },
 
-    bindEvents: function () {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-
     resetCarouselView: function() {
         var parentNode = document.getElementById('wrapper');
         while(parentNode.firstChild) {
@@ -351,6 +347,7 @@ var app = {
         // Load initial data
         for (i=0; i<3; i++) {
             page = i==0 ? slides.length-1 : i-1;
+            if(page >= slides.length) page = 0;
             el = document.createElement('img');
             el.className = 'loading';
             el.src = slides[page].img;
@@ -440,5 +437,10 @@ var app = {
         var updatedText = editDiv.children[0].children[0].value;
         editDiv.style.display = 'none';
         document.querySelector('#swipeview-slider .swipeview-active span').innerText = updatedText;
+    },
+
+    bindEvents: function () {
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+        //$('#image').load('pages/img-gather.html');
     }
 };

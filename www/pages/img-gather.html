@@ -1,0 +1,30 @@
+<!-- Image Gathering Page -->
+<div id="img-gather" style="display:block;">
+    <div class="home-bg" style="height:74vh">
+        <div id='images' style="position:relative; overflow-y:auto; width:100%; height:60vh">
+            <ul id="imageGrid" data-inset="true">
+                <li style="display:none; ">
+                    <a href="#" class="camContainer">
+                        <img src="" class="camImg">
+                        <h5></h5>
+                        <button class="ui-btn ui-btn-inline ui-icon-delete ui-btn-icon-notext no-styles" onclick="app.deleteImage(this)">Delete</button>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="editImageText">
+            <label for="updated-text" class="ui-hidden-accessible">Text input:</label>
+            <input type="text" name="updated-text" data-clear-btn="true">
+            <a href="#" onclick="app.updateImageText(this)">Update</a>
+        </div>
+    </div>
+
+    <button type="button" onclick="app.takePicture()" class="btnRegular btn-left btnFooter">Take Photo</button>
+    <button type="button" onclick="app.lookupLibrary()" class="btnRegular btn-right btnFooter">Library..</button>
+
+    <button class="btnAnalyzeImage" onclick="app.analyzePicture()">Confirm Floor Info</button>
+    
+    <br />
+    <label id="result" style="margin:auto;"> </label>
+</div>
