@@ -185,14 +185,22 @@ h1 {
     position: absolute;
     left: 1%;
     right: 0;
-    bottom: -3%;
+    bottom: 12%
 }
 .btnRegular {
-    background-color: #F9AF00 !important;
     color: white !important;
     border-color: black !important;
     border-radius: 75px !important;
     z-index: 2;
+}
+.btn-left {
+    background-color: #549D00 !important;
+    border-radius: 75px 0 0 75px !important;
+}
+.btn-right {
+    background-color: #F9AF00 !important;
+    border-radius: 0 75px 75px 0 !important;
+    left:48%;
 }
 .ui-mobile .ui-page {
     min-height: 100% !important;
@@ -293,14 +301,6 @@ button.ui-btn,
 .tab-size {
     font-size: 8vw !important;
 }
-.analyazeText {
-    position: fixed;
-    left: 3%;
-    right: 0;
-    bottom: 15%;
-    opacity: 0.8;
-    width: 90%;
-}
 #btnUploadAll {
     height: 50px;
     width: 150px;
@@ -323,4 +323,14 @@ button.ui-btn,
     border: 5px solid #549D00;
     width: 85%;
 
+}
+.btnAnalyzeImage {
+    height: 8%;
+    width: 80% !important;
+    border: 2px solid #9B9B9B !important;
+    border-radius: 100px !important;
+    position: fixed;
+    left: 10%;
+    right: 0;
+    bottom: 13%;
 }
